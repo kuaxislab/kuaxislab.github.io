@@ -89,15 +89,20 @@ const scenarios = [
   { title: "Remote Object Control", desc: "During high-focus tasks like UAV or robot teleoperation, HaRing delivers ambient information such as obstacle proximity." },
 ];
 
-const bibtex = `@inproceedings{nam2026haring,
-  title     = {HaRing: A Haptic Ring Interface for One-Handed Interaction
-               with High-Dimensional Spatial Information},
-  author    = {Nam, Suheon and Son, Juhyung and Choi, Seungmoon
-               and Park, Chaeyong},
-  booktitle = {Proceedings of the 2026 CHI Conference on Human Factors
-               in Computing Systems},
+const bibtex = `@inproceedings{Nam2026:HaRing,
+  author    = {Nam, Suheon and Son, Juhyung and Choi, Seungmoon and Park, Chaeyong},
+  title     = {HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information},
   year      = {2026},
-  doi       = {10.1145/3772318.3791663}
+  isbn      = {9798400722783},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3772318.3791663},
+  doi       = {10.1145/3772318.3791663},
+  booktitle = {Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems},
+  articleno = {1119},
+  numpages  = {15},
+  keywords  = {Wearable Tactile Display, Finger-Worn Tactile Display, Ring, One-hand interaction, Spatial Tactile Pattern, Eyes-Free Interaction},
+  series    = {CHI '26}
 }`;
 
 const expColorClass: Record<string, { bg: string; dot: string; text: string; badge: string }> = {
@@ -118,12 +123,13 @@ function CopyBibtex() {
   );
 }
 
+/* 자연 비율 이미지 — 이미지 크기에 맞게 박스가 줄어듦 */
 function PaperImage({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   const [err, setErr] = useState(false);
   return (
     <div>
       {!err ? (
-        <Image src={src} alt={alt} width={1200} height={600} className="w-full rounded-xl object-cover" onError={() => setErr(true)} />
+        <Image src={src} alt={alt} width={1200} height={600} className="w-full rounded-xl object-contain" onError={() => setErr(true)} />
       ) : (
         <div className="w-full aspect-video rounded-xl bg-slate-100 flex flex-col items-center justify-center gap-2 border-2 border-dashed border-slate-200">
           <p className="text-xs text-slate-400 font-medium">{alt}</p>
@@ -135,15 +141,41 @@ function PaperImage({ src, alt, caption }: { src: string; alt: string; caption?:
   );
 }
 
-function FixedHeightImage({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+/* 고정 높이 + 자연 너비 — 이미지에 딱 맞는 박스, letterbox 없음 */
+function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string; caption?: string; h?: string }) {
+  const [err, setErr] = useState(false);
+  return (
+    <div className="flex flex-col items-center">
+      {!err ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={alt}
+          className={`${h} w-auto max-w-full rounded-xl border border-slate-200`}
+          onError={() => setErr(true)}
+        />
+      ) : (
+        <div className={`${h} w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
+          <p className="text-xs text-slate-400 text-center px-2">Add: {src.split("/").pop()}</p>
+        </div>
+      )}
+      {caption && <p className="text-sm text-slate-400 text-center mt-2 italic">{caption}</p>}
+    </div>
+  );
+}
+
+/* 4:3 비율 고정 — 좌우 나란히 같은 높이 맞춤용 (결과 그래프 등) */
+function RatioImage({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   const [err, setErr] = useState(false);
   return (
     <div>
-      <div className="w-full h-56 sm:h-64 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
+      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
         {!err ? (
-          <Image src={src} alt={alt} width={800} height={500} className="w-full h-full object-contain" onError={() => setErr(true)} />
+          <Image src={src} alt={alt} fill className="object-contain" onError={() => setErr(true)} />
         ) : (
-          <p className="text-xs text-slate-400">Add: {src.split("/").pop()}</p>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="text-xs text-slate-400">Add: {src.split("/").pop()}</p>
+          </div>
         )}
       </div>
       {caption && <p className="text-sm text-slate-400 text-center mt-2 italic">{caption}</p>}
@@ -257,19 +289,20 @@ export default function HaRingPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               HaRing Design
             </h2>
-            <p className="text-base text-slate-500 mb-8 max-w-2xl">
+            <p className="text-base text-slate-500 mb-8">
               HaRing is worn on the index finger and features a 4 × 6 pin array (24 pins total) actuated by individual solenoids with a flip-latch mechanism. The display module measures just 10.1 × 15.6 × 8.15 mm, fitting the ring form factor while delivering high-resolution spatial patterns.
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+          {/* 3 stat boxes — items-stretch keeps equal height */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8 items-stretch">
             {[
               { label: "Pin Array", value: "4 × 6", sub: "24 individually actuated pins" },
               { label: "Display Size", value: "10.1 mm", sub: "× 15.6 × 8.15 mm module" },
               { label: "Pattern Types", value: "Directions, Letters, Symbols", sub: "High-dimensional information" },
             ].map((s) => (
-              <AnimatedSection key={s.label}>
-                <div className="card p-5 text-center">
+              <AnimatedSection key={s.label} className="flex">
+                <div className="card p-5 text-center w-full flex flex-col justify-center">
                   <p className="text-2xl font-extrabold text-teal-600 mb-1">{s.value}</p>
                   <p className="text-sm font-semibold text-slate-700 mb-0.5">{s.label}</p>
                   <p className="text-xs text-slate-400">{s.sub}</p>
@@ -278,17 +311,20 @@ export default function HaRingPage() {
             ))}
           </div>
 
+          {/* fig2 + fig3: 같은 높이(h-64), 자연 너비, 가운데 정렬 */}
           <AnimatedSection>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
-              <FixedHeightImage
+            <div className="flex flex-wrap gap-6 justify-center items-start">
+              <FitImage
                 src="/images/pub_pages/haring/fig2.png"
                 alt="HaRing system architecture and hardware"
                 caption="Fig. 2. System architecture, hardware, exploded view, and wearing example."
+                h="h-64"
               />
-              <FixedHeightImage
+              <FitImage
                 src="/images/pub_pages/haring/fig3.png"
                 alt="HaRing authoring tool"
                 caption="Fig. 3. GUI-based authoring tool for creating tactile patterns."
+                h="h-72"
               />
             </div>
           </AnimatedSection>
@@ -303,7 +339,7 @@ export default function HaRingPage() {
               <span className="w-8 h-1 bg-coral-500 rounded-full inline-block" />
               User Studies
             </h2>
-            <p className="text-base text-slate-500 mb-10 max-w-2xl">
+            <p className="text-base text-slate-500 mb-10">
               Four sequential studies progressively validated HaRing&apos;s perceptual capabilities, from primitive pattern recognition to complex alphabet learning.
             </p>
           </AnimatedSection>
@@ -334,17 +370,36 @@ export default function HaRingPage() {
             })}
           </div>
 
+          {/* Designed Patterns from Exp. 2 — fig78 single wide image */}
+          <AnimatedSection className="mt-12">
+            <h3 className="text-lg font-extrabold text-slate-800 mb-2 flex items-center gap-3">
+              <span className="w-5 h-1 bg-coral-500 rounded-full inline-block" />
+              Designed Haptic Patterns (Exp. 2 Output)
+            </h3>
+            <p className="text-sm text-slate-500 mb-6">
+              10 participants iteratively designed patterns for 24 keywords using the HaRing authoring tool. The final patterns were selected by prioritizing user consensus, empirical perceptual data from Exp. 1, and expert refinement — balancing visual intuition with tactile distinguishability. Semantic patterns (left) include media controls, social actions, and confirmation symbols. Directional patterns (right) cover 8 cardinal directions and 4 navigation commands, designed using edge-based cues for clearer perceptual distinction.
+            </p>
+            <PaperImage
+              src="/images/pub_pages/haring/fig78.png"
+              alt="Designed patterns for semantic and directional information"
+              caption="Fig. 7–8. Final haptic patterns designed for 12 semantic keywords (left) and 12 directional keywords (right)."
+            />
+          </AnimatedSection>
+
+          {/* Exp. 3 & 4 Results */}
           <AnimatedSection className="mt-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
-              <FixedHeightImage
+            <div className="flex flex-wrap gap-6 justify-center items-start">
+              <FitImage
                 src="/images/pub_pages/haring/fig12.png"
                 alt="Accuracy results of Exp. 3 pattern identification"
                 caption="Fig. 12. Box plots for accuracy in Exp. 3: directions 98.3%, semantic 81.1%."
+                h="h-72"
               />
-              <FixedHeightImage
+              <FitImage
                 src="/images/pub_pages/haring/fig13.png"
                 alt="Learning effect results in Exp. 4"
                 caption="Fig. 13. Accuracy improved from 68.8% to 93.2% after short-term learning."
+                h="h-72"
               />
             </div>
           </AnimatedSection>
@@ -374,11 +429,13 @@ export default function HaRingPage() {
             ))}
           </div>
           <AnimatedSection className="mt-8">
-            <PaperImage
-              src="/images/pub_pages/haring/fig15.png"
-              alt="HaRing application scenarios"
-              caption="Fig. 15. Application scenarios: (a) eyes-free navigation, (b) VR menu selection, (c) unobtrusive information transfer, (d) remote object control."
-            />
+            <div className="max-w-2xl mx-auto">
+              <PaperImage
+                src="/images/pub_pages/haring/fig15.png"
+                alt="HaRing application scenarios"
+                caption="Fig. 15. Application scenarios: (a) eyes-free navigation, (b) VR menu selection, (c) unobtrusive information transfer, (d) remote object control."
+              />
+            </div>
           </AnimatedSection>
         </div>
       </section>

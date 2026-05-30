@@ -320,17 +320,17 @@ export default function HaptiCraftPage() {
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
-              <FixedHeightImage
-                src="/images/pub_pages/hapticraft/fig9.png"
-                alt="GUI of HaptiCraft authoring tool"
-                caption="Fig. 9. GUI of the HaptiCraft authoring tool."
-              />
-              <FixedHeightImage
-                src="/images/pub_pages/hapticraft/fig12.png"
-                alt="TAM results of authoring tool user study"
-                caption="Fig. 12. Technology Acceptance Model (TAM) for the controller authoring tool."
-              />
+            <div className="flex flex-wrap gap-6 justify-center items-start">
+              <div className="flex flex-col items-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/pub_pages/hapticraft/fig9.png" alt="GUI of HaptiCraft authoring tool" className="h-64 w-auto max-w-full rounded-xl border border-slate-200" />
+                <p className="text-sm text-slate-400 text-center mt-2 italic">Fig. 9. GUI of the HaptiCraft authoring tool.</p>
+              </div>
+              <div className="flex flex-col items-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/pub_pages/hapticraft/fig12.png" alt="TAM results of authoring tool user study" className="h-64 w-auto max-w-full rounded-xl border border-slate-200" />
+                <p className="text-sm text-slate-400 text-center mt-2 italic">Fig. 12. Technology Acceptance Model (TAM) for the controller authoring tool.</p>
+              </div>
             </div>
           </AnimatedSection>
         </div>

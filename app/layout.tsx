@@ -16,6 +16,23 @@ export const metadata: Metadata = {
     icon: "/images/logo_circle.png",
     apple: "/images/logo_circle.png",
   },
+  openGraph: {
+    title: "AXIS Lab | Korea University",
+    description:
+      "Augmented eXperience & Interactive Systems Laboratory at Korea University. Research in haptics, VR/AR, and human-computer interaction.",
+    url: "https://kuaxislab.github.io",
+    siteName: "AXIS Lab",
+    images: [
+      {
+        url: "https://kuaxislab.github.io/images/logo_full.png",
+        width: 1200,
+        height: 630,
+        alt: "AXIS Lab Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

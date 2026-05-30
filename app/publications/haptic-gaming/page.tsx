@@ -51,8 +51,8 @@ const pathCoefficients = [
 ];
 
 const descriptiveStats = [
-  { condition: "Player + Haptic",    cc: "6.19", pe: "5.56", pu: "4.79", att: "5.44", iu: "5.39" },
-  { condition: "Player + No Haptic", cc: "5.71", pe: "5.04", pu: "4.28", att: "4.97", iu: "4.77" },
+  { condition: "Player + Haptic",       cc: "6.19", pe: "5.56", pu: "4.79", att: "5.44", iu: "5.39" },
+  { condition: "Player + No Haptic",    cc: "5.71", pe: "5.04", pu: "4.28", att: "4.97", iu: "4.77" },
   { condition: "Spectator + Haptic",    cc: "5.60", pe: "5.03", pu: "4.41", att: "4.97", iu: "4.76" },
   { condition: "Spectator + No Haptic", cc: "4.59", pe: "4.13", pu: "3.63", att: "4.10", iu: "3.81" },
 ];
@@ -64,15 +64,20 @@ const colorClass: Record<string, string> = {
   slate: "bg-slate-50 border-slate-200 text-slate-600",
 };
 
-const bibtex = `@inproceedings{sohn2026haptic,
-  title     = {Effects of Haptic Feedback on Gaming Experiences:
-               A Case Study Comparing Players and Spectators
-               in FPS Games},
+const bibtex = `@inproceedings{Sohn2026:effects,
   author    = {Sohn, Heeji and Park, Chaeyong and Choi, Seungmoon},
-  booktitle = {Proceedings of the 2026 CHI Conference on Human Factors
-               in Computing Systems},
+  title     = {Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games},
   year      = {2026},
-  doi       = {10.1145/3772318.3791144}
+  isbn      = {9798400722783},
+  publisher = {Association for Computing Machinery},
+  address   = {New York, NY, USA},
+  url       = {https://doi.org/10.1145/3772318.3791144},
+  doi       = {10.1145/3772318.3791144},
+  booktitle = {Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems},
+  articleno = {846},
+  numpages  = {16},
+  keywords  = {Video games, haptics, gaming experience, player, spectator, technology acceptance},
+  series    = {CHI '26}
 }`;
 
 function CopyBibtex() {
@@ -87,12 +92,13 @@ function CopyBibtex() {
   );
 }
 
+/* 전체 너비 이미지 */
 function PaperImage({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   const [err, setErr] = useState(false);
   return (
     <div>
       {!err ? (
-        <Image src={src} alt={alt} width={1200} height={600} className="w-full rounded-xl object-cover" onError={() => setErr(true)} />
+        <Image src={src} alt={alt} width={1200} height={600} className="w-full rounded-xl object-contain" onError={() => setErr(true)} />
       ) : (
         <div className="w-full aspect-video rounded-xl bg-slate-100 flex flex-col items-center justify-center gap-2 border-2 border-dashed border-slate-200">
           <p className="text-xs text-slate-400 font-medium">{alt}</p>
@@ -104,17 +110,24 @@ function PaperImage({ src, alt, caption }: { src: string; alt: string; caption?:
   );
 }
 
-function FixedHeightImage({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+/* 고정 높이 + 자연 너비 — 이미지에 딱 맞는 박스, letterbox 없음 */
+function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string; caption?: string; h?: string }) {
   const [err, setErr] = useState(false);
   return (
-    <div>
-      <div className="w-full h-56 sm:h-64 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
-        {!err ? (
-          <Image src={src} alt={alt} width={800} height={500} className="w-full h-full object-contain" onError={() => setErr(true)} />
-        ) : (
-          <p className="text-xs text-slate-400">Add: {src.split("/").pop()}</p>
-        )}
-      </div>
+    <div className="flex flex-col items-center">
+      {!err ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={alt}
+          className={`${h} w-auto max-w-full rounded-xl border border-slate-200`}
+          onError={() => setErr(true)}
+        />
+      ) : (
+        <div className={`${h} w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
+          <p className="text-xs text-slate-400 text-center px-2">Add: {src.split("/").pop()}</p>
+        </div>
+      )}
       {caption && <p className="text-sm text-slate-400 text-center mt-2 italic">{caption}</p>}
     </div>
   );
@@ -226,7 +239,7 @@ export default function HapticGamingPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Study Design
             </h2>
-            <p className="text-base text-slate-500 mb-8 max-w-2xl">
+            <p className="text-base text-slate-500 mb-8">
               A within-subject experiment with 60 participants (36M, 24F; ages 18–32) tested four conditions: Player vs. Spectator × Haptic vs. Non-Haptic. Participants used a custom haptic mouse (3 voice-coil actuators) in an FPS game powered by Aimlabs, with audio-to-haptic conversion for gunshot and footstep events.
             </p>
           </AnimatedSection>
@@ -249,16 +262,18 @@ export default function HapticGamingPage() {
           </div>
 
           <AnimatedSection>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
-              <FixedHeightImage
+            <div className="flex flex-wrap gap-6 justify-center items-start">
+              <FitImage
                 src="/images/pub_pages/haptic-gaming/fig5.png"
                 alt="FPS game used in the study"
                 caption="Fig. 5. Custom FPS game (Aimlabs) used in the user study."
+                h="h-64"
               />
-              <FixedHeightImage
+              <FitImage
                 src="/images/pub_pages/haptic-gaming/fig6.png"
                 alt="Custom haptic mouse with voice-coil actuators"
                 caption="Fig. 6. Custom haptic mouse with 3 embedded voice-coil actuators."
+                h="h-64"
               />
             </div>
           </AnimatedSection>
@@ -291,11 +306,14 @@ export default function HapticGamingPage() {
           </div>
 
           <AnimatedSection>
-            <PaperImage
-              src="/images/pub_pages/haptic-gaming/fig3.png"
-              alt="HAG-TAM research model diagram"
-              caption="Fig. 3. HAG-TAM with 6 constructs and 6 hypothesized causal relationships (H1–H6)."
-            />
+            <div className="flex justify-center">
+              <FitImage
+                src="/images/pub_pages/haptic-gaming/fig3.png"
+                alt="HAG-TAM research model diagram"
+                caption="Fig. 3. HAG-TAM with 6 constructs and 6 hypothesized causal relationships (H1–H6)."
+                h="h-72"
+              />
+            </div>
           </AnimatedSection>
         </div>
       </section>
@@ -308,9 +326,25 @@ export default function HapticGamingPage() {
               <span className="w-8 h-1 bg-gold-500 rounded-full inline-block" />
               Results
             </h2>
-            <p className="text-base text-slate-500 mb-8 max-w-2xl">
+            <p className="text-base text-slate-500 mb-8">
               All six hypotheses were supported for both players and spectators (p &lt; .001). The structural model revealed two distinct pathways and notable role-dependent differences.
             </p>
+          </AnimatedSection>
+
+          {/* Fig. 8 — means of all constructs */}
+          <AnimatedSection className="mb-10">
+            <h3 className="text-base font-bold text-slate-700 mb-2">Construct Means by Condition</h3>
+            <p className="text-sm text-slate-500 mb-4">
+              Haptic feedback consistently raised all five constructs for both players and spectators. The effect was more pronounced among spectators across all measures, with the largest gap observed in cognitive concentration and intention to use.
+            </p>
+            <div className="flex justify-center">
+              <FitImage
+                src="/images/pub_pages/haptic-gaming/fig8.png"
+                alt="Means and standard errors of the five constructs"
+                caption="Fig. 8. Means and standard errors of (a) Cognitive Concentration, (b) Perceived Enjoyment, (c) Perceived Usefulness, (d) Attitude Toward Using, and (e) Intention to Use across the four conditions."
+                h="h-72"
+              />
+            </div>
           </AnimatedSection>
 
           {/* Descriptive stats table */}
@@ -376,11 +410,14 @@ export default function HapticGamingPage() {
           </AnimatedSection>
 
           <AnimatedSection>
-            <PaperImage
-              src="/images/pub_pages/haptic-gaming/fig9.png"
-              alt="HAG-TAM structural model results"
-              caption="Fig. 9. Structural model results. Green: player path coefficients; Orange: spectator path coefficients. Hedonic pathway (top) and eudaimonic pathway (bottom)."
-            />
+            <div className="flex justify-center">
+              <FitImage
+                src="/images/pub_pages/haptic-gaming/fig9.png"
+                alt="HAG-TAM structural model results"
+                caption="Fig. 9. Structural model results. Green: player path coefficients; Orange: spectator path coefficients. Hedonic pathway (top) and eudaimonic pathway (bottom)."
+                h="h-72"
+              />
+            </div>
           </AnimatedSection>
         </div>
       </section>
