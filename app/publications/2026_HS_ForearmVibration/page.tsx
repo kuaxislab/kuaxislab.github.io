@@ -125,36 +125,28 @@ function CopyBibtex() {
   );
 }
 
-function PaperImage({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+/* 이미지에 딱 맞는 박스 — 모바일: w-full h-auto / 데스크탑: h-고정 w-auto */
+const smHeightMap: Record<string, string> = {
+  "h-56": "sm:h-56", "h-64": "sm:h-64", "h-72": "sm:h-72", "h-80": "sm:h-80",
+};
+function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string; caption?: string; h?: string }) {
   const [err, setErr] = useState(false);
+  const smH = smHeightMap[h] ?? "sm:h-64";
   return (
-    <div>
+    <div className="flex flex-col items-center w-full">
       {!err ? (
-        <Image src={src} alt={alt} width={1200} height={600} className="w-full rounded-xl object-cover" onError={() => setErr(true)} />
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={alt}
+          className={`w-full h-auto ${smH} sm:w-auto rounded-xl border border-slate-200`}
+          onError={() => setErr(true)}
+        />
       ) : (
-        <div className="w-full aspect-video rounded-xl bg-slate-100 flex flex-col items-center justify-center gap-2 border-2 border-dashed border-slate-200">
-          <p className="text-xs text-slate-400 font-medium">{alt}</p>
-          <p className="text-xs text-slate-300">Add image to public/images/pub_pages/spatiotemporal/</p>
+        <div className={`w-full ${smH} sm:w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
+          <p className="text-xs text-slate-400 text-center px-2">Add: {src.split("/").pop()}</p>
         </div>
       )}
-      {caption && <p className="text-sm text-slate-400 text-center mt-2 italic">{caption}</p>}
-    </div>
-  );
-}
-
-function FixedHeightImage({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
-  const [err, setErr] = useState(false);
-  return (
-    <div>
-      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
-        {!err ? (
-          <Image src={src} alt={alt} fill className="object-contain" onError={() => setErr(true)} />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="text-xs text-slate-400">Add: {src.split("/").pop()}</p>
-          </div>
-        )}
-      </div>
       {caption && <p className="text-sm text-slate-400 text-center mt-2 italic">{caption}</p>}
     </div>
   );
@@ -224,17 +216,6 @@ export default function SpatiotemporalPage() {
         </motion.div>
       </section>
 
-      {/* Teaser */}
-      <section className="container-main pb-10">
-        <AnimatedSection>
-          <PaperImage
-            src="/images/pub_pages/spatiotemporal/teaser.png"
-            alt="Forearm vibrotactile display setup"
-            caption="Experimental setup showing ERM actuators mounted on velcro bands on the forearm for vibrotactile stimulus identification."
-          />
-        </AnimatedSection>
-      </section>
-
       {/* Abstract */}
       <section className="bg-slate-50/70 py-14">
         <div className="container-main">
@@ -270,7 +251,7 @@ export default function SpatiotemporalPage() {
         </div>
       </section>
 
-      {/* Apparatus */}
+      {/* Apparatus — Fig 1 only */}
       <section className="py-14">
         <div className="container-main">
           <AnimatedSection>
@@ -278,7 +259,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Experimental Apparatus
             </h2>
-            <p className="text-base text-slate-500 mb-8 max-w-2xl">
+            <p className="text-base text-slate-500 mb-8">
               ERM (Eccentric Rotating Mass) motors were used as vibrotactile actuators, driven by PWM signals from an Arduino Due. Tactors were mounted on adjustable velcro bands and positioned along the distal–proximal forearm axis, distributed across palmar, dorsal, medial, and lateral surfaces.
             </p>
           </AnimatedSection>
@@ -301,23 +282,17 @@ export default function SpatiotemporalPage() {
           </div>
 
           <AnimatedSection>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
-              <FixedHeightImage
-                src="/images/pub_pages/spatiotemporal/fig1.png"
-                alt="Experimental setup showing forearm band placement"
-                caption="Fig. 1. Example placement of tactors on the distal and proximal forearm using velcro bands."
-              />
-              <FixedHeightImage
-                src="/images/pub_pages/spatiotemporal/fig2.png"
-                alt="Spatial configurations of tactors"
-                caption="Fig. 2. Spatial configurations used in Exp. 1–3, shown as cross-sectional forearm layouts."
-              />
-            </div>
+            <FitImage
+              src="/images/pub_pages/spatiotemporal/fig1.png"
+              alt="Experimental setup showing forearm band placement"
+              caption="Fig. 1. Example placement of tactors on the distal and proximal forearm using velcro bands."
+              h="h-72"
+            />
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Spatial Experiments */}
+      {/* Spatial Experiments — Fig 2 + Fig 4 at 40% */}
       <section className="bg-slate-50/70 py-14">
         <div className="container-main">
           <AnimatedSection>
@@ -325,7 +300,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-coral-500 rounded-full inline-block" />
               Exp. 1–3: Effects of Spatial Factors
             </h2>
-            <p className="text-base text-slate-500 mb-8 max-w-2xl">
+            <p className="text-base text-slate-500 mb-8">
               Three experiments systematically varied the number and arrangement of tactors to establish the spatial limits of forearm vibrotactile localization.
             </p>
           </AnimatedSection>
@@ -338,17 +313,27 @@ export default function SpatiotemporalPage() {
             ))}
           </div>
 
+          {/* Fig 2 + Fig 4 나란히 */}
           <AnimatedSection>
-            <PaperImage
-              src="/images/pub_pages/spatiotemporal/fig4.png"
-              alt="Results of Exp. 1–3 for spatial factors"
-              caption="Fig. 4. PC scores and information transfer values (IT_est vs IT_max) across all spatial configurations in Exp. 1–3."
-            />
+            <div className="flex flex-wrap gap-6 justify-center items-start">
+              <FitImage
+                src="/images/pub_pages/spatiotemporal/fig2.png"
+                alt="Spatial configurations of tactors used in Exp. 1–3"
+                caption="Fig. 2. Spatial configurations used in Exp. 1–3."
+                h="h-64"
+              />
+              <FitImage
+                src="/images/pub_pages/spatiotemporal/fig4.png"
+                alt="Results of Exp. 1–3 for spatial factors"
+                caption="Fig. 4. PC scores and IT values across all spatial configurations in Exp. 1–3."
+                h="h-64"
+              />
+            </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Temporal Experiments */}
+      {/* Temporal Experiments — Fig 9 first, Fig 11 second */}
       <section className="py-14">
         <div className="container-main">
           <AnimatedSection>
@@ -356,7 +341,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-gold-500 rounded-full inline-block" />
               Exp. 4–6: Effects of Temporal Factors
             </h2>
-            <p className="text-base text-slate-500 mb-8 max-w-2xl">
+            <p className="text-base text-slate-500 mb-8">
               Using the optimal spatial configurations from Exp. 1–3, three further experiments examined vibration duration, inter-stimulus interval, and sequence length.
             </p>
           </AnimatedSection>
@@ -370,16 +355,18 @@ export default function SpatiotemporalPage() {
           </div>
 
           <AnimatedSection>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
-              <FixedHeightImage
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+              <FitImage
+                src="/images/pub_pages/spatiotemporal/fig9.png"
+                alt="Spatiotemporal conditions used in Exp. 4–6"
+                caption="Fig. 9. Spatiotemporal conditions used in Exp. 4–6 with cross-sectional tactor layouts."
+                h="h-72"
+              />
+              <FitImage
                 src="/images/pub_pages/spatiotemporal/fig11.png"
                 alt="Results of Exp. 4–6 temporal factors"
                 caption="Fig. 11. PC scores for temporal experiments. Sequential stimuli accuracy by vibration number and ISI."
-              />
-              <FixedHeightImage
-                src="/images/pub_pages/spatiotemporal/fig9.png"
-                alt="Spatiotemporal conditions used in Exp. 4-6"
-                caption="Fig. 9. Spatiotemporal conditions used in Exp. 4–6 with cross-sectional tactor layouts."
+                h="h-72"
               />
             </div>
           </AnimatedSection>
@@ -394,7 +381,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Design Guidelines for Wearable Tactile Displays
             </h2>
-            <p className="text-base text-slate-500 mb-8 max-w-2xl">
+            <p className="text-base text-slate-500 mb-8">
               Based on the six experiments, these guidelines inform the design of compact, efficient forearm-mounted vibrotactile displays for tactile communication.
             </p>
           </AnimatedSection>

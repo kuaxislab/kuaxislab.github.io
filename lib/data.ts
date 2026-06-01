@@ -63,7 +63,7 @@ export const publications: Publication[] = [
     type: "journal",
     note: "Q1 Journal · JCR top 5.4%",
     thumbnail: "/images/publications/hapticraft.png",
-    slug: "hapticraft",
+    slug: "2026_TVCG_HaptiCraft",
   },
   {
     title:
@@ -74,7 +74,7 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1145/3772318.3791663",
     type: "conference",
     thumbnail: "/images/publications/haring.png",
-    slug: "haring",
+    slug: "2026_CHI_HaRing",
   },
   {
     title:
@@ -85,7 +85,7 @@ export const publications: Publication[] = [
     doi: "https://doi.org/10.1145/3772318.3791144",
     type: "conference",
     thumbnail: "/images/publications/haptic_gaming_chi26.png",
-    slug: "haptic-gaming",
+    slug: "2026_CHI_HapticGaming",
   },
   {
     title:
@@ -97,7 +97,7 @@ export const publications: Publication[] = [
     award: "Best Paper Nomination",
     type: "conference",
     thumbnail: "/images/publications/spatiotemporal_hs26.png",
-    slug: "spatiotemporal",
+    slug: "2026_HS_ForearmVibration",
   },
   {
     title:
@@ -438,7 +438,7 @@ export const news: NewsItem[] = [
     date: "April 2026",
     year: 2026,
     description:
-      "Paper accepted in IEEE Transactions on Visualization and Computer Graphics (Q1 Journal · JCR top 5.4%).",
+      "A paper accepted in IEEE Transactions on Visualization and Computer Graphics (Q1 Journal · JCR top 5.4%).",
     type: "paper",
     image: "/images/news/news_2026_tvcg.png",
   },
@@ -454,7 +454,7 @@ export const news: NewsItem[] = [
     date: "February 2026",
     year: 2026,
     description:
-      "Paper accepted in IEEE Transactions on Haptics.",
+      "A paper accepted in IEEE Transactions on Haptics.",
     type: "paper",
     image: "/images/news/news_2026_toh.png",
   },
@@ -462,7 +462,7 @@ export const news: NewsItem[] = [
     date: "February 2026",
     year: 2026,
     description:
-      "Paper accepted in Advanced Intelligent Systems (Q1 Journal).",
+      "A paper accepted in Advanced Intelligent Systems (Q1 Journal).",
     type: "paper",
     image: "/images/news/news_2026_ais.png",
   },
@@ -496,7 +496,7 @@ export const news: NewsItem[] = [
     date: "December 2025",
     year: 2025,
     description:
-      "Paper accepted in ACS Applied Materials & Interfaces.",
+      "A paper accepted in ACS Applied Materials & Interfaces.",
     type: "paper",
     image: "/images/news/news_2025_acs.png",
   },
@@ -504,7 +504,7 @@ export const news: NewsItem[] = [
     date: "December 2025",
     year: 2025,
     description:
-      "Paper accepted at IEEE Haptics Symposium 2026.",
+      "A paper accepted at IEEE Haptics Symposium 2026.",
     type: "paper",
     image: "/images/news/news_2025_haptics.png",
   },
@@ -520,7 +520,7 @@ export const news: NewsItem[] = [
     date: "February 2025",
     year: 2025,
     description:
-      "Paper published in Advanced Materials Technologies (Q1 Journal).",
+      "A paper published in Advanced Materials Technologies (Q1 Journal).",
     type: "paper",
     image: "/images/news/news_2025_amt.png",
   },
