@@ -14,7 +14,7 @@ const paper = {
     { name: "Jeongwoo Kim", affil: "2" },
     { name: "Yuk-Gwon Song", affil: "3" },
     { name: "Sang-Youn Kim", affil: "3" },
-    { name: "Seungmoon Choi", affil: "2", note: "†" },
+    { name: "Seungmoon Choi", affil: "2", note: "†", url: "https://choism.postech.ac.kr/" },
   ],
   affiliations: [
     { id: "1", name: "Korea University" },
@@ -180,7 +180,7 @@ export default function HaptiCraftPage() {
             {paper.authors.map((a) => (
               <span key={a.name} className="text-base text-slate-700 font-medium">
                 {a.url ? (
-                  <a href={a.url} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">
+                  <a href={a.url} target="_blank" rel="noopener noreferrer" className="underline decoration-teal-500 decoration-2 underline-offset-2 hover:decoration-teal-700">
                     {a.name}
                   </a>
                 ) : a.name}

@@ -109,6 +109,7 @@ export const publications: Publication[] = [
     doi: "http://doi.org/10.1109/TOH.2026.3667214",
     type: "journal",
     thumbnail: "/images/publications/egocentric_directions.png",
+    slug: "2026_TOH_EgocentricDirection",
   },
   {
     title:
@@ -121,6 +122,7 @@ export const publications: Publication[] = [
     type: "journal",
     note: "Q1 Journal",
     thumbnail: "/images/publications/robotic_grasp.png",
+    slug: "2026_AIS_RoboticGrasp",
   },
   {
     title:

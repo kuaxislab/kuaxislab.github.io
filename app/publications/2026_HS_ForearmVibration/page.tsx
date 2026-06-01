@@ -10,11 +10,11 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 const paper = {
   title: "Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification",
   authors: [
-    { name: "Dong-Geun Kim", affil: "1" },
+    { name: "Dong-Geun Kim", affil: "1", url: "https://dgkim94.github.io/" },
     { name: "Geunho Lee", affil: "1" },
     { name: "Suheon Nam", affil: "1" },
     { name: "Chaeyong Park", affil: "2", url: "https://chaeyongpark.github.io/" },
-    { name: "Seungmoon Choi", affil: "1" },
+    { name: "Seungmoon Choi", affil: "1" , url: "https://choism.postech.ac.kr/"},
   ],
   affiliations: [
     { id: "1", name: "POSTECH" },
@@ -197,7 +197,7 @@ export default function SpatiotemporalPage() {
             {paper.authors.map((a) => (
               <span key={a.name} className="text-base text-slate-700 font-medium">
                 {a.url ? (
-                  <a href={a.url} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">
+                  <a href={a.url} target="_blank" rel="noopener noreferrer" className="underline decoration-teal-500 decoration-2 underline-offset-2 hover:decoration-teal-700">
                     {a.name}
                   </a>
                 ) : a.name}

@@ -12,7 +12,7 @@ const paper = {
   authors: [
     { name: "Suheon Nam", affil: "1" },
     { name: "Juhyung Son", affil: "1" },
-    { name: "Seungmoon Choi", affil: "1" },
+    { name: "Seungmoon Choi", affil: "1", url: "https://choism.postech.ac.kr/" },
     { name: "Chaeyong Park", affil: "2", url: "https://chaeyongpark.github.io/" },
   ],
   affiliations: [
@@ -205,7 +205,6 @@ export default function HaRingPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <div className="flex flex-wrap gap-2 mb-5">
             <span className="badge badge-teal text-sm px-3 py-1">{paper.venueShort} &middot; {paper.year}</span>
-            <span className="badge badge-slate text-sm px-3 py-1">Barcelona, Spain</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6 max-w-4xl">
@@ -216,7 +215,7 @@ export default function HaRingPage() {
             {paper.authors.map((a) => (
               <span key={a.name} className="text-base text-slate-700 font-medium">
                 {a.url ? (
-                  <a href={a.url} target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">
+                  <a href={a.url} target="_blank" rel="noopener noreferrer" className="underline decoration-teal-500 decoration-2 underline-offset-2 hover:decoration-teal-700">
                     {a.name}
                   </a>
                 ) : a.name}
