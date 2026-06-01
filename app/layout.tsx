@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "AXIS Lab",
     images: [
       {
-        url: "https://kuaxislab.github.io/images/logo_full.png",
+        url: "https://kuaxislab.github.io/images/logo_og.png",
         width: 1200,
         height: 630,
         alt: "AXIS Lab Logo",
