@@ -146,11 +146,13 @@ function FixedHeightImage({ src, alt, caption }: { src: string; alt: string; cap
   const [err, setErr] = useState(false);
   return (
     <div>
-      <div className="w-full h-56 sm:h-64 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 flex items-center justify-center">
+      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
         {!err ? (
-          <Image src={src} alt={alt} width={800} height={500} className="w-full h-full object-contain" onError={() => setErr(true)} />
+          <Image src={src} alt={alt} fill className="object-contain" onError={() => setErr(true)} />
         ) : (
-          <p className="text-xs text-slate-400">Add: {src.split("/").pop()}</p>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="text-xs text-slate-400">Add: {src.split("/").pop()}</p>
+          </div>
         )}
       </div>
       {caption && <p className="text-sm text-slate-400 text-center mt-2 italic">{caption}</p>}

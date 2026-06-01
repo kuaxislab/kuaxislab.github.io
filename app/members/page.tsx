@@ -29,15 +29,15 @@ function ProfessorCard({ member }: { member: Member }) {
     <motion.div
       initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className="card p-6 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start border-t-4 border-teal-500"
+      className="card p-6 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start border-t-4 border-teal-500"
     >
       <MemberPhoto src={member.photo} name={member.name} size="lg" />
-      <div className="flex-1">
+      <div className="flex-1 text-center sm:text-left">
         <div className="flex flex-wrap items-center gap-2 mb-1">
           <h2 className="text-2xl font-extrabold text-slate-900">{member.name}</h2>
           <span className="badge badge-teal">PI</span>
         </div>
-        <p className="text-base text-teal-600 font-semibold mb-1">{member.role}</p>
+        <p className="text-base text-teal-600 font-semibold mb-0.5">Assistant Professor</p>
         <p className="text-sm text-slate-500 mb-4">Department of Computer Science and Engineering, Korea University</p>
         {member.interests && (
           <div className="flex items-start gap-2 text-base text-slate-600 mb-2">
@@ -51,7 +51,7 @@ function ProfessorCard({ member }: { member: Member }) {
             <span><span className="font-medium">Education: </span>{member.education}</span>
           </div>
         )}
-        <div className="flex flex-wrap gap-2 mt-4">
+        <div className="flex flex-wrap gap-2 mt-4 justify-center sm:justify-start">
           <a href={`mailto:${member.email}`} className="btn-secondary text-xs px-3 py-1.5">
             <Mail size={13} />Email
           </a>
@@ -102,7 +102,7 @@ export default function MembersPage() {
         <section className="mb-14">
           <AnimatedSection className="mb-6">
             <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 flex items-center gap-2">
-              <span className="w-4 h-px bg-teal-500" />Principal Investigator
+              <span className="w-4 h-px bg-teal-500" />Faculty
             </h2>
           </AnimatedSection>
           <ProfessorCard member={professor} />
@@ -128,8 +128,8 @@ export default function MembersPage() {
             <p className="text-slate-500 text-base mb-6 max-w-md mx-auto">
               AXIS Lab is actively recruiting undergraduate and graduate researchers. If you are passionate about haptics, VR, or HCI, please get in touch.
             </p>
-            <Link href="mailto:chaeyong@korea.ac.kr" className="btn-primary">
-              <Mail size={16} />Contact Prof. Park
+            <Link href="/contact" className="btn-primary">
+              <Mail size={16} />Contact / How to Join
             </Link>
           </div>
         </AnimatedSection>

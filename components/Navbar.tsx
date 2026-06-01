@@ -36,7 +36,7 @@ export function Navbar() {
       <div className="container-main">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center shrink-0">
-            <div className="relative h-14 w-56">
+            <div className="relative h-9 w-44">
               <Image src="/images/logo_full3.png" alt="AXIS Lab" fill className="object-contain object-left" priority />
             </div>
           </Link>

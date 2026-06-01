@@ -7,31 +7,7 @@ export function Footer() {
     <footer className="border-t border-slate-200 bg-slate-50 mt-auto">
       <div className="container-main py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-          {/* Left: AXIS Lab brand */}
-          <div>
-            <div className="relative h-10 w-44 mb-3">
-              <Image
-                src="/images/logo_full.png"
-                alt="AXIS Lab"
-                fill
-                className="object-contain object-left"
-              />
-            </div>
-            <p className="text-sm text-slate-500 leading-relaxed mb-6 max-w-sm">
-              Augmented eXperience &amp; Interactive Systems Laboratory
-            </p>
-            {/* Korea University logo */}
-            <div className="relative h-10 w-48">
-              <Image
-                src="/images/logo_koreaUniv.png"
-                alt="Korea University"
-                fill
-                className="object-contain object-left"
-              />
-            </div>
-          </div>
-
-          {/* Right: Contact */}
+          {/* Left: Contact */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">
               Contact
@@ -55,6 +31,26 @@ export function Footer() {
                 </span>
               </li>
             </ul>
+          </div>
+
+          {/* Right: Logos side by side */}
+          <div className="flex items-center gap-8 md:justify-end">
+            <div className="relative h-16 w-56">
+              <Image
+                src="/images/logo_full.png"
+                alt="AXIS Lab"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
+            <div className="relative h-16 w-64">
+              <Image
+                src="/images/logo_koreaUniv.png"
+                alt="Korea University"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
           </div>
         </div>
 

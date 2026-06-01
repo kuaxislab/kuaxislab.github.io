@@ -323,12 +323,12 @@ export default function HaptiCraftPage() {
             <div className="flex flex-wrap gap-6 justify-center items-start">
               <div className="flex flex-col items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/pub_pages/hapticraft/fig9.png" alt="GUI of HaptiCraft authoring tool" className="h-64 w-auto max-w-full rounded-xl border border-slate-200" />
+                <img src="/images/pub_pages/hapticraft/fig9.png" alt="GUI of HaptiCraft authoring tool" className="w-full h-auto sm:h-64 sm:w-auto rounded-xl border border-slate-200" />
                 <p className="text-sm text-slate-400 text-center mt-2 italic">Fig. 9. GUI of the HaptiCraft authoring tool.</p>
               </div>
               <div className="flex flex-col items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/pub_pages/hapticraft/fig12.png" alt="TAM results of authoring tool user study" className="h-64 w-auto max-w-full rounded-xl border border-slate-200" />
+                <img src="/images/pub_pages/hapticraft/fig12.png" alt="TAM results of authoring tool user study" className="w-full h-auto sm:h-64 sm:w-auto rounded-xl border border-slate-200" />
                 <p className="text-sm text-slate-400 text-center mt-2 italic">Fig. 12. Technology Acceptance Model (TAM) for the controller authoring tool.</p>
               </div>
             </div>

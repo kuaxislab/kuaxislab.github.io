@@ -110,21 +110,26 @@ function PaperImage({ src, alt, caption }: { src: string; alt: string; caption?:
   );
 }
 
-/* 고정 높이 + 자연 너비 — 이미지에 딱 맞는 박스, letterbox 없음 */
+/* 고정 높이 + 자연 너비 — 이미지에 딱 맞는 박스, letterbox 없음
+   모바일: w-full h-auto / 데스크탑: h-고정 w-auto */
+const smHeightMap: Record<string, string> = {
+  "h-56": "sm:h-56", "h-64": "sm:h-64", "h-72": "sm:h-72", "h-80": "sm:h-80",
+};
 function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string; caption?: string; h?: string }) {
   const [err, setErr] = useState(false);
+  const smH = smHeightMap[h] ?? "sm:h-64";
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
       {!err ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={src}
           alt={alt}
-          className={`${h} w-auto max-w-full rounded-xl border border-slate-200`}
+          className={`w-full h-auto ${smH} sm:w-auto rounded-xl border border-slate-200`}
           onError={() => setErr(true)}
         />
       ) : (
-        <div className={`${h} w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
+        <div className={`w-full ${smH} sm:w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
           <p className="text-xs text-slate-400 text-center px-2">Add: {src.split("/").pop()}</p>
         </div>
       )}

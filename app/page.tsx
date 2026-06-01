@@ -58,12 +58,12 @@ export default function HomePage() {
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <motion.div initial={{ opacity: 0, x: -32 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}>
-              <div className="relative h-16 sm:h-20 w-64 sm:w-80 mb-6">
+              <div className="relative h-24 sm:h-32 w-80 sm:w-[440px] mb-6">
                 <Image src="/images/logo_full.png" alt="AXIS Lab" fill className="object-contain object-left" priority />
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50 border border-teal-200 mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
-                <span className="text-xs font-semibold text-teal-600 tracking-wide">Korea University</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border mb-5" style={{ backgroundColor: "#79003015", borderColor: "#79003040" }}>
+                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#790030" }} />
+                <span className="text-xs font-bold tracking-widest" style={{ color: "#790030" }}>KOREA UNIVERSITY</span>
               </div>
               <p className="text-lg sm:text-xl font-medium text-slate-700 mb-3">
                 Augmented eXperience &amp;<br />Interactive Systems Laboratory

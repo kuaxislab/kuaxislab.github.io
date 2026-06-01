@@ -45,12 +45,9 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
           <div className="mb-1.5">
             {pub.slug ? (
               <Link href={`/publications/${pub.slug}`}
-                className="group/link font-semibold text-base text-slate-900 hover:text-teal-600 transition-colors leading-snug"
+                className="font-semibold text-base text-slate-900 hover:text-teal-600 transition-colors leading-snug"
               >
                 {pub.title}
-                <span className="ml-2 inline-flex items-center text-xs font-semibold text-teal-500 opacity-0 group-hover/link:opacity-100 transition-opacity">
-                  Project Page →
-                </span>
               </Link>
             ) : pub.doi ? (
               <a href={pub.doi} target="_blank" rel="noopener noreferrer"
@@ -66,6 +63,7 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
           <p className="text-base text-slate-500 mb-1.5">{pub.authors}</p>
           <div className="flex flex-wrap items-center gap-2">
             <span className={`font-medium italic text-sm ${venueColor}`}>{pub.venue}</span>
+            {pub.type === "poster" && <span className="badge badge-slate">Poster</span>}
             {pub.note && <span className="badge badge-slate">{pub.note}</span>}
             {pub.award && (
               <span className={`badge ${awardStyle[pub.award]}`}>
@@ -93,7 +91,6 @@ function YearSection({ year, pubs }: { year: string | number; pubs: Publication[
 }
 
 export default function PublicationsPage() {
-  const underReview = publications.filter((p) => p.year === "Under Review");
   const byYear = publications
     .filter((p) => p.year !== "Under Review")
     .reduce<Record<number, Publication[]>>((acc, pub) => {
@@ -111,31 +108,7 @@ export default function PublicationsPage() {
           <h1 className="section-title mb-3">Publications</h1>
         </AnimatedSection>
 
-        {underReview.length > 0 && (
-          <AnimatedSection>
-            <div className="mb-12">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-2xl font-extrabold text-slate-400 shrink-0">Under Review</span>
-                <div className="flex-1 h-px bg-slate-200" />
-                <span className="text-sm text-slate-400 shrink-0">{underReview.length} papers</span>
-              </div>
-              <p className="text-sm text-slate-400 italic mb-4">Details omitted pending review.</p>
-              <div className="space-y-2.5">
-                {underReview.map((pub, i) => (
-                  <div key={i} className="flex items-center gap-3 py-2.5 px-4 rounded-xl bg-slate-50">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0" />
-                    <span className="text-base text-slate-600">{pub.title}</span>
-                    <span className="ml-auto badge badge-slate shrink-0">
-                      {pub.venue.includes("Major") ? "Major Revision" : "Under Review"}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimatedSection>
-        )}
-
-        {years.map((year) => <YearSection key={year} year={year} pubs={byYear[year]} />)}
+{years.map((year) => <YearSection key={year} year={year} pubs={byYear[year]} />)}
       </div>
     </div>
   );
