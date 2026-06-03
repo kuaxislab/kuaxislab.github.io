@@ -142,6 +142,7 @@ export const publications: Publication[] = [
     authors: "Mingyu Kim, Gerard Jounghyun Kim, Chaeyong Park",
     venue: "IEEE VR 2026",
     year: 2026,
+    doi: "https://ieeexplore.ieee.org/abstract/document/11489854",
     type: "poster",
     thumbnail: "/images/publications/visual_framing_vr26.png",
   },
