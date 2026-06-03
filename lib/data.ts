@@ -560,7 +560,7 @@ export const professor: Member = {
     { label: "CV", href: "https://drive.google.com/file/d/1n1WTxAel43w9w8EajqqlseumyDOJ49mL/view" },
     {
       label: "Google Scholar",
-      href: "https://scholar.google.com/citations?user=Chaeyong+Park",
+      href: "https://scholar.google.com/citations?user=OM-ySi4AAAAJ",
     },
     { label: "Personal Page", href: "https://chaeyongpark.github.io/" },
   ],
