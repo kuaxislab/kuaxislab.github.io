@@ -78,12 +78,19 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
 }
 
 function YearSection({ year, pubs }: { year: string | number; pubs: Publication[] }) {
+  const paperCount = pubs.filter((p) => p.type === "journal" || p.type === "conference").length;
+  const posterCount = pubs.filter((p) => p.type === "poster" || p.type === "workshop").length;
+  const countLabel = [
+    paperCount > 0 && `${paperCount} paper${paperCount > 1 ? "s" : ""}`,
+    posterCount > 0 && `${posterCount} poster${posterCount > 1 ? "s" : ""}`,
+  ].filter(Boolean).join(", ");
+
   return (
     <div className="mb-12">
       <div className="flex items-center gap-4 mb-2">
         <span className="text-2xl font-extrabold text-teal-500 tabular-nums shrink-0">{year}</span>
         <div className="flex-1 h-px bg-slate-200" />
-        <span className="text-sm text-slate-400 shrink-0">{pubs.length} paper{pubs.length > 1 ? "s" : ""}</span>
+        <span className="text-sm text-slate-400 shrink-0">{countLabel}</span>
       </div>
       {pubs.map((pub, i) => <PubItem key={i} pub={pub} index={i} />)}
     </div>
