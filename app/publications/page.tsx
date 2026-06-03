@@ -42,13 +42,22 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
       <div className="flex flex-col sm:flex-row gap-4 py-5 border-b border-slate-100 last:border-0 hover:bg-slate-50/50 -mx-4 px-4 rounded-xl transition-colors">
         <PubThumb src={thumb} />
         <div className="flex-1 min-w-0">
-          <div className="mb-1.5">
+          <div className="mb-1.5 group/row">
             {pub.slug ? (
-              <Link href={`/publications/${pub.slug}`}
-                className="font-semibold text-base text-slate-900 hover:text-teal-600 transition-colors leading-snug"
-              >
-                {pub.title}
-              </Link>
+              <>
+                <Link href={`/publications/${pub.slug}`}
+                  className="font-semibold text-base text-slate-900 hover:text-teal-600 transition-colors leading-snug"
+                >
+                  {pub.title}
+                </Link>
+                {pub.doi && (
+                  <a href={pub.doi} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center ml-1.5 opacity-0 group-hover/row:opacity-40 hover:!opacity-100 transition-opacity text-slate-400 hover:text-teal-600"
+                  >
+                    <ExternalLink size={12} />
+                  </a>
+                )}
+              </>
             ) : pub.doi ? (
               <a href={pub.doi} target="_blank" rel="noopener noreferrer"
                 className="group/link font-semibold text-base text-slate-900 hover:text-teal-600 transition-colors leading-snug"
