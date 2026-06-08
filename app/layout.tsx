@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     title: "AXIS Lab | Korea University",
     description:
       "Augmented eXperience & Interactive Systems Laboratory at Korea University. Research in haptics, VR/AR, and human-computer interaction.",
-    url: "https://kuaxislab.github.io",
+    url: "https://axis.korea.ac.kr",
     siteName: "AXIS Lab",
     images: [
       {
-        url: "https://kuaxislab.github.io/images/logo_og.png",
+        url: "https://axis.korea.ac.kr/images/logo_og.png",
         width: 1200,
         height: 630,
         alt: "AXIS Lab Logo",
