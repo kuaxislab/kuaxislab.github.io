@@ -1,9 +1,9 @@
 ﻿// ─── Publications ───────────────────────────────────────────────────────────
 
 export type Award =
-  | "Best Paper"
+  | "Best Paper Award"
   | "Best Paper Nomination"
-  | "Honorable Mention";
+  | "Best Paper Honorable Mention Award";
 
 export type PubType = "journal" | "conference" | "workshop" | "poster";
 
@@ -185,7 +185,7 @@ export const publications: Publication[] = [
     title:
       "Simple-Architectured Elastic Touch Sensor with High Spatiotemporal Resolution",
     authors:
-      "Junchen Luo, Chaeyong Park, Yebin Park, Jaehyun Kim, Seungmoon Choi, Unyong Jeong",
+      "Junchen Luo*, Chaeyong Park*, Yebin Park, Jaehyun Kim, Seungmoon Choi, Unyong Jeong",
     venue: "Advanced Materials Technologies, Vol. 10, No. 4, 2401280",
     year: 2025,
     doi: "https://advanced.onlinelibrary.wiley.com/doi/10.1002/admt.202401280",
@@ -425,6 +425,7 @@ export interface NewsItem {
   description: string;
   type: NewsType;
   image?: string;
+  link?: { label: string; href: string };
 }
 
 export const news: NewsItem[] = [
@@ -433,9 +434,10 @@ export const news: NewsItem[] = [
     date: "April 2026",
     year: 2026,
     description:
-      "AXIS Lab participated in ITRC 인재양성대전 2026 with several VR demonstrations, showcasing our latest research to the public.",
+      "AXIS Lab participated in ITRC 인재양성대전 2026 with several VR demonstrations, showcasing our latest research to the public. Watch the video below.",
     type: "event",
     image: "/images/news/news_2026_itrc.png",
+    link: { label: "Watch Video", href: "https://youtu.be/F-La324By7Y?si=N5m9txEo3AhvXGFC&t=137" },
   },
   {
     date: "April 2026",

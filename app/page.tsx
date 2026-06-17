@@ -106,6 +106,13 @@ export default function HomePage() {
                       <span className="text-sm font-semibold text-slate-400 whitespace-nowrap">{item.date}</span>
                     </div>
                     <p className="text-base text-slate-700 leading-relaxed">{item.description}</p>
+                    {item.link && (
+                      <a href={item.link.href} target="_blank" rel="noopener noreferrer"
+                        className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors"
+                      >
+                        {item.link.label}<ExternalLink size={13} />
+                      </a>
+                    )}
                   </div>
                   {item.image && <HomeNewsImage src={item.image} alt={item.description} />}
                 </div>

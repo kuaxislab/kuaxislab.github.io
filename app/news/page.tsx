@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Newspaper, Award, Calendar, TrendingUp, BookOpen } from "lucide-react";
+import { Newspaper, Award, Calendar, TrendingUp, BookOpen, ExternalLink } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { news } from "@/lib/data";
 import type { NewsType } from "@/lib/data";
@@ -68,9 +68,18 @@ export default function NewsPage() {
                           </div>
                           {/* Content: text + image side by side on sm+, stacked on mobile */}
                           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start">
-                            <p className="flex-1 text-base text-slate-700 leading-relaxed">
-                              {item.description}
-                            </p>
+                            <div className="flex-1">
+                              <p className="text-base text-slate-700 leading-relaxed">
+                                {item.description}
+                              </p>
+                              {item.link && (
+                                <a href={item.link.href} target="_blank" rel="noopener noreferrer"
+                                  className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors"
+                                >
+                                  {item.link.label}<ExternalLink size={13} />
+                                </a>
+                              )}
+                            </div>
                             {item.image && <NewsImage src={item.image} alt={item.description} />}
                           </div>
                         </div>
