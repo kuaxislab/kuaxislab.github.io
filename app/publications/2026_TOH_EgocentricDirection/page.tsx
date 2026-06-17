@@ -9,7 +9,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 const paper = {
   title: "Representing Egocentric Directions with Torso-Applied Vibrotactile Stimuli",
   authors: [
-    { name: "Junwoo Kim", affil: "1" },
+    { name: "Junwoo Kim", affil: "1" , url: "https://junwooweb.github.io/"},
     { name: "Jaejun Park", affil: "1" },
     { name: "Chaeyong Park", affil: "2", url: "https://chaeyongpark.github.io/" },
     { name: "Junseok Park", affil: "3" },
