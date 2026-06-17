@@ -244,7 +244,7 @@ export const publications: Publication[] = [
     title:
       "Human Recognition Performance of Simple Spatial Vibrotactile Patterns on the Torso",
     authors:
-      "Junwoo Kim, Heeyeon Kim, Chaeyong Park, Seungmoon Choi",
+      "Junwoo Kim*, Heeyeon Kim*, Chaeyong Park, Seungmoon Choi",
     venue: "IEEE World Haptics Conference 2023",
     year: 2023,
     doi: "https://ieeexplore.ieee.org/document/10224430",
@@ -277,7 +277,7 @@ export const publications: Publication[] = [
     title:
       "Intrinsically Synchronized Flexible Visuo-Haptic Device Operated by Single External Electric Field",
     authors:
-      "Gilwoon Lee, Chaeyong Park, Doowon Park, Seungmoon Choi, Unyong Jeong",
+      "Gilwoon Lee*, Chaeyong Park*, Doowon Park, Seungmoon Choi, Unyong Jeong",
     venue: "Advanced Optical Materials, Vol. 11, No. 7, 2202515",
     year: 2023,
     doi: "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adom.202202515",
