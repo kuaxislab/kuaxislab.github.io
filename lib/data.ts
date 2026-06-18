@@ -1,9 +1,9 @@
 ﻿// ─── Publications ───────────────────────────────────────────────────────────
 
 export type Award =
-  | "Best Paper Award"
+  | "Best Paper"
   | "Best Paper Nomination"
-  | "Best Paper Honorable Mention Award";
+  | "Honorable Mention";
 
 export type PubType = "journal" | "conference" | "workshop" | "poster";
 
