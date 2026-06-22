@@ -431,6 +431,14 @@ export interface NewsItem {
 export const news: NewsItem[] = [
   // ── 2026 ────────────────────────────────────────────────────────────────
   {
+    date: "June 2026",
+    year: 2026,
+    description:
+      "Three papers accepted to IEEE ISMAR 2026. See you in Bari!",
+    type: "paper",
+    image: "/images/news/news_2026_ismar.png",
+  },
+  {
     date: "April 2026",
     year: 2026,
     description:
@@ -443,7 +451,7 @@ export const news: NewsItem[] = [
     date: "April 2026",
     year: 2026,
     description:
-      "A paper accepted in IEEE Transactions on Visualization and Computer Graphics (Q1 Journal · JCR top 5.4%).",
+      "A paper accepted to IEEE Transactions on Visualization and Computer Graphics (Q1 Journal · JCR top 5.4%).",
     type: "paper",
     image: "/images/news/news_2026_tvcg.png",
   },
@@ -459,7 +467,7 @@ export const news: NewsItem[] = [
     date: "February 2026",
     year: 2026,
     description:
-      "A paper accepted in IEEE Transactions on Haptics.",
+      "A paper accepted to IEEE Transactions on Haptics.",
     type: "paper",
     image: "/images/news/news_2026_toh.png",
   },
@@ -467,7 +475,7 @@ export const news: NewsItem[] = [
     date: "February 2026",
     year: 2026,
     description:
-      "A paper accepted in Advanced Intelligent Systems (Q1 Journal).",
+      "A paper accepted to Advanced Intelligent Systems (Q1 Journal).",
     type: "paper",
     image: "/images/news/news_2026_ais.png",
   },
@@ -475,7 +483,7 @@ export const news: NewsItem[] = [
     date: "January 2026",
     year: 2026,
     description:
-      "Two papers accepted at ACM CHI 2026.",
+      "Two papers accepted to ACM CHI 2026.",
     type: "paper",
     image: "/images/news/news_2026_chi.png",
   },
@@ -483,7 +491,7 @@ export const news: NewsItem[] = [
     date: "January 2026",
     year: 2026,
     description:
-      "One poster conditionally accepted at IEEE VR 2026.",
+      "One poster accepted to IEEE VR 2026.",
     type: "paper",
     image: "/images/news/news_2026_vr.png",
   },
@@ -501,7 +509,7 @@ export const news: NewsItem[] = [
     date: "December 2025",
     year: 2025,
     description:
-      "A paper accepted in ACS Applied Materials & Interfaces.",
+      "A paper accepted to ACS Applied Materials & Interfaces.",
     type: "paper",
     image: "/images/news/news_2025_acs.png",
   },
@@ -509,7 +517,7 @@ export const news: NewsItem[] = [
     date: "December 2025",
     year: 2025,
     description:
-      "A paper accepted at IEEE Haptics Symposium 2026.",
+      "A paper accepted to IEEE Haptics Symposium 2026.",
     type: "paper",
     image: "/images/news/news_2025_haptics.png",
   },
@@ -525,7 +533,7 @@ export const news: NewsItem[] = [
     date: "February 2025",
     year: 2025,
     description:
-      "A paper published in Advanced Materials Technologies (Q1 Journal).",
+      "A paper published to Advanced Materials Technologies (Q1 Journal).",
     type: "paper",
     image: "/images/news/news_2025_amt.png",
   },
