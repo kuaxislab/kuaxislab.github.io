@@ -29,27 +29,6 @@ export const publications: Publication[] = [
     year: "Under Review",
     type: "journal",
   },
-  {
-    title: "Evaluation of Cybersickness via the Visual and Vestibular Systems",
-    authors: "AXIS Lab",
-    venue: "Under Review",
-    year: "Under Review",
-    type: "journal",
-  },
-  {
-    title: "Cybersickness Reduction via Haptic Cue",
-    authors: "AXIS Lab",
-    venue: "Under Review",
-    year: "Under Review",
-    type: "journal",
-  },
-  {
-    title: "VR Navigation via Wearable Haptics",
-    authors: "AXIS Lab",
-    venue: "Under Review",
-    year: "Under Review",
-    type: "journal",
-  },
 
   // ── 2026 ────────────────────────────────────────────────────────────────
   {
@@ -59,6 +38,7 @@ export const publications: Publication[] = [
     venue: "IEEE ISMAR 2026",
     year: 2026,
     type: "conference",
+    note: "Conditionally Accepted",
     thumbnail: "/images/publications/2026_ismar_a.png",
   },
   {
@@ -68,6 +48,7 @@ export const publications: Publication[] = [
     venue: "IEEE ISMAR 2026",
     year: 2026,
     type: "conference",
+    note: "Conditionally Accepted",
     thumbnail: "/images/publications/2026_ismar_b.png",
   },
   {
@@ -77,6 +58,7 @@ export const publications: Publication[] = [
     venue: "IEEE ISMAR 2026",
     year: 2026,
     type: "conference",
+    note: "Conditionally Accepted",
     thumbnail: "/images/publications/2026_ismar_c.png",
   },
   {
