@@ -54,6 +54,33 @@ export const publications: Publication[] = [
   // ── 2026 ────────────────────────────────────────────────────────────────
   {
     title:
+      "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
+    authors: "Jaehyeong Hwang, Hyeseong Jin, Chaeyong Park",
+    venue: "IEEE ISMAR 2026",
+    year: 2026,
+    type: "conference",
+    thumbnail: "/images/publications/2026_ismar_a.png",
+  },
+  {
+    title:
+      "Feeling Visual Motion: Mitigating Cybersickness in VR Using Tactile Motion Cues",
+    authors: "Hyeseong Jin, Jaehyeong Hwang, Chaeyong Park",
+    venue: "IEEE ISMAR 2026",
+    year: 2026,
+    type: "conference",
+    thumbnail: "/images/publications/2026_ismar_b.png",
+  },
+  {
+    title:
+      "Cybersickness Reduction Effects of Visual and Vestibular Player-Fixed Rest Frames",
+    authors: "Jungha Kim, Seunghoon Park, Chaeyong Park, Sun-Uk Lee, Gerard Jounghyun Kim",
+    venue: "IEEE ISMAR 2026",
+    year: 2026,
+    type: "conference",
+    thumbnail: "/images/publications/2026_ismar_c.png",
+  },
+  {
+    title:
       "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
     authors:
       "Chaeyong Park, Jeongwoo Kim, Yuk-Gwon Song, Sang-Youn Kim, Seungmoon Choi",
