@@ -443,7 +443,7 @@ export const news: NewsItem[] = [
     date: "June 2026",
     year: 2026,
     description:
-      "Three papers accepted to IEEE ISMAR 2026. See you in Bari!",
+      "Three papers were accepted to IEEE ISMAR 2026. See you in Bari!",
     type: "paper",
     image: "/images/news/news_2026_ismar.png",
   },
@@ -460,7 +460,7 @@ export const news: NewsItem[] = [
     date: "April 2026",
     year: 2026,
     description:
-      "A paper accepted to IEEE Transactions on Visualization and Computer Graphics (Q1 Journal · JCR top 5.4%).",
+      "A paper was accepted to IEEE Transactions on Visualization and Computer Graphics (Q1 Journal · JCR top 5.4%).",
     type: "paper",
     image: "/images/news/news_2026_tvcg.png",
   },
@@ -468,7 +468,7 @@ export const news: NewsItem[] = [
     date: "March 2026",
     year: 2026,
     description:
-      "Prof. Chaeyong Park selected for the Outstanding Young Researcher Grant by NRF, providing 94M KRW/year over three years.",
+      "Prof. Chaeyong Park was selected for the Outstanding Young Researcher Grant by NRF, providing 94M KRW/year over three years.",
     type: "grant",
     image: "/images/news/news_2026_nrf.png",
   },
@@ -476,7 +476,7 @@ export const news: NewsItem[] = [
     date: "February 2026",
     year: 2026,
     description:
-      "A paper accepted to IEEE Transactions on Haptics.",
+      "A paper was accepted to IEEE Transactions on Haptics.",
     type: "paper",
     image: "/images/news/news_2026_toh.png",
   },
@@ -484,7 +484,7 @@ export const news: NewsItem[] = [
     date: "February 2026",
     year: 2026,
     description:
-      "A paper accepted to Advanced Intelligent Systems (Q1 Journal).",
+      "A paper was accepted to Advanced Intelligent Systems (Q1 Journal).",
     type: "paper",
     image: "/images/news/news_2026_ais.png",
   },
@@ -492,7 +492,7 @@ export const news: NewsItem[] = [
     date: "January 2026",
     year: 2026,
     description:
-      "Two papers accepted to ACM CHI 2026.",
+      "Two papers were accepted to ACM CHI 2026.",
     type: "paper",
     image: "/images/news/news_2026_chi.png",
   },
@@ -500,7 +500,7 @@ export const news: NewsItem[] = [
     date: "January 2026",
     year: 2026,
     description:
-      "One poster accepted to IEEE VR 2026.",
+      "One poster was accepted to IEEE VR 2026.",
     type: "paper",
     image: "/images/news/news_2026_vr.png",
   },
@@ -508,7 +508,7 @@ export const news: NewsItem[] = [
     date: "January 2026",
     year: 2026,
     description:
-      "Prof. Chaeyong Park appointed as Poster Associate Chair (AC) for ACM CHI 2026.",
+      "Prof. Chaeyong Park was appointed as Poster Associate Chair (AC) for ACM CHI 2026.",
     type: "service",
     image: "/images/news/news_2026_chi.png",
   },
@@ -518,7 +518,7 @@ export const news: NewsItem[] = [
     date: "December 2025",
     year: 2025,
     description:
-      "A paper accepted to ACS Applied Materials & Interfaces.",
+      "A paper was accepted to ACS Applied Materials & Interfaces.",
     type: "paper",
     image: "/images/news/news_2025_acs.png",
   },
@@ -526,7 +526,7 @@ export const news: NewsItem[] = [
     date: "December 2025",
     year: 2025,
     description:
-      "A paper accepted to IEEE Haptics Symposium 2026.",
+      "A paper was accepted to IEEE Haptics Symposium 2026.",
     type: "paper",
     image: "/images/news/news_2025_haptics.png",
   },
@@ -542,7 +542,7 @@ export const news: NewsItem[] = [
     date: "February 2025",
     year: 2025,
     description:
-      "A paper published to Advanced Materials Technologies (Q1 Journal).",
+      "A paper was published to Advanced Materials Technologies (Q1 Journal).",
     type: "paper",
     image: "/images/news/news_2025_amt.png",
   },
