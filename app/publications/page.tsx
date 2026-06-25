@@ -12,14 +12,14 @@ const DEFAULT_THUMB = "/images/publications/2026_tvcg.png";
 const venueColor = "text-teal-600";
 
 const awardIcon = {
-  "Best Paper":            <Trophy size={11} />,
-  "Best Paper Nomination": <Star size={11} />,
-  "Honorable Mention":     <Award size={11} />,
+  "Best Paper Award":                  <Trophy size={11} />,
+  "Best Paper Nomination":             <Star size={11} />,
+  "Best Paper Honorable Mention Award": <Award size={11} />,
 };
 const awardStyle = {
-  "Best Paper":            "badge-coral",
-  "Best Paper Nomination": "badge-gold",
-  "Honorable Mention":     "badge-gold",
+  "Best Paper Award":                  "badge-coral",
+  "Best Paper Nomination":             "badge-gold",
+  "Best Paper Honorable Mention Award": "badge-gold",
 };
 
 function PubThumb({ src }: { src: string }) {

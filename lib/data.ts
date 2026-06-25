@@ -1,9 +1,9 @@
 ﻿// ─── Publications ───────────────────────────────────────────────────────────
 
 export type Award =
-  | "Best Paper"
+  | "Best Paper Award"
   | "Best Paper Nomination"
-  | "Honorable Mention";
+  | "Best Paper Honorable Mention Award";
 
 export type PubType = "journal" | "conference" | "workshop" | "poster";
 
@@ -154,7 +154,7 @@ export const publications: Publication[] = [
     authors: "Heeji Sohn, Chaeyong Park, Seungmoon Choi",
     venue: "IEEE World Haptics Conference 2025",
     year: 2025,
-    award: "Honorable Mention",
+    award: "Best Paper Honorable Mention Award",
     type: "workshop",
     note: "Work-in-Progress",
     thumbnail: "/images/publications/haptic_gaming_whc25.png",
@@ -214,7 +214,7 @@ export const publications: Publication[] = [
     venue: "ACM CHI 2024",
     year: 2024,
     doi: "https://dl.acm.org/doi/10.1145/3613904.3642251",
-    award: "Honorable Mention",
+    award: "Best Paper Honorable Mention Award",
     type: "conference",
     thumbnail: "/images/publications/handheld_length_chi24.png",
   },
@@ -269,7 +269,7 @@ export const publications: Publication[] = [
     venue: "ACM CHI 2023",
     year: 2023,
     doi: "https://dl.acm.org/doi/10.1145/3544548.3580724",
-    award: "Honorable Mention",
+    award: "Best Paper Honorable Mention Award",
     type: "conference",
     thumbnail: "/images/publications/crossmodal_shape_chi23.png",
   },
