@@ -72,6 +72,15 @@ export default function NewsPage() {
                               <p className="text-base text-slate-700 leading-relaxed">
                                 {item.description}
                               </p>
+                              {item.papers && (
+                                <ul className="mt-2 space-y-1">
+                                  {item.papers.map((title, j) => (
+                                    <li key={j} className="text-sm text-teal-700 italic leading-snug pl-3 border-l-2 border-teal-200">
+                                      {title}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
                               {item.link && (
                                 <a href={item.link.href} target="_blank" rel="noopener noreferrer"
                                   className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors"

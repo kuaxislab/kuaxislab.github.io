@@ -61,12 +61,8 @@ export default function HomePage() {
               <div className="relative h-24 sm:h-32 w-80 sm:w-[440px] mb-6">
                 <Image src="/images/logo_full.png" alt="AXIS Lab" fill className="object-contain object-left" priority />
               </div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border mb-5" style={{ backgroundColor: "#79003015", borderColor: "#79003040" }}>
-                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#790030" }} />
-                <span className="text-xs font-bold tracking-widest" style={{ color: "#790030" }}>KOREA UNIVERSITY</span>
-              </div>
               <p className="text-lg sm:text-xl font-medium text-slate-700 mb-3">
-                Augmented eXperience &amp;<br />Interactive Systems Laboratory
+                Augmented eXperience &amp;<br />Interactive Systems Laboratory, Korea university
               </p>
               <p className="text-base text-slate-500 leading-relaxed mb-8 max-w-lg">
                 We research haptic technology, next-generation VR/AR, and human-computer interaction — creating experiences that go beyond screens to engage every sense.
@@ -106,6 +102,15 @@ export default function HomePage() {
                       <span className="text-sm font-semibold text-slate-400 whitespace-nowrap">{item.date}</span>
                     </div>
                     <p className="text-base text-slate-700 leading-relaxed">{item.description}</p>
+                    {item.papers && (
+                      <ul className="mt-2 space-y-1">
+                        {item.papers.map((title, j) => (
+                          <li key={j} className="text-sm text-teal-700 italic leading-snug pl-3 border-l-2 border-teal-200">
+                            {title}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                     {item.link && (
                       <a href={item.link.href} target="_blank" rel="noopener noreferrer"
                         className="mt-1.5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-600 hover:text-teal-700 transition-colors"

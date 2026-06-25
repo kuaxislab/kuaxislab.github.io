@@ -435,6 +435,7 @@ export interface NewsItem {
   type: NewsType;
   image?: string;
   link?: { label: string; href: string };
+  papers?: string[];
 }
 
 export const news: NewsItem[] = [
@@ -446,6 +447,11 @@ export const news: NewsItem[] = [
       "Three papers were accepted to IEEE ISMAR 2026. See you in Bari!",
     type: "paper",
     image: "/images/news/news_2026_ismar.png",
+    papers: [
+      "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
+      "Feeling Visual Motion: Mitigating Cybersickness in VR Using Tactile Motion Cues",
+      "Cybersickness Reduction Effects of Visual and Vestibular Player-Fixed Rest Frames",
+    ],
   },
   {
     date: "April 2026",
@@ -463,6 +469,9 @@ export const news: NewsItem[] = [
       "A paper was accepted to IEEE Transactions on Visualization and Computer Graphics (Q1 Journal · JCR top 5.4%).",
     type: "paper",
     image: "/images/news/news_2026_tvcg.png",
+    papers: [
+      "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
+    ],
   },
   {
     date: "March 2026",
@@ -479,6 +488,9 @@ export const news: NewsItem[] = [
       "A paper was accepted to IEEE Transactions on Haptics.",
     type: "paper",
     image: "/images/news/news_2026_toh.png",
+    papers: [
+      "Representing Egocentric Directions with Torso-Applied Vibrotactile Stimuli",
+    ],
   },
   {
     date: "February 2026",
@@ -487,6 +499,9 @@ export const news: NewsItem[] = [
       "A paper was accepted to Advanced Intelligent Systems (Q1 Journal).",
     type: "paper",
     image: "/images/news/news_2026_ais.png",
+    papers: [
+      "Proactive Robotic Grasp Stability via Tactile Safety Margin Feedback",
+    ],
   },
   {
     date: "January 2026",
@@ -495,6 +510,10 @@ export const news: NewsItem[] = [
       "Two papers were accepted to ACM CHI 2026.",
     type: "paper",
     image: "/images/news/news_2026_chi.png",
+    papers: [
+      "HaRing: A Haptic Ring Interface for One-Handed Interaction with High-Dimensional Spatial Information",
+      "Effects of Haptic Feedback on Gaming Experiences: A Case Study Comparing Players and Spectators in FPS Games",
+    ],
   },
   {
     date: "January 2026",
@@ -503,6 +522,9 @@ export const news: NewsItem[] = [
       "One poster was accepted to IEEE VR 2026.",
     type: "paper",
     image: "/images/news/news_2026_vr.png",
+    papers: [
+      "Implicit and Explicit Visual Framing Effects on Illusory Relative Weight Perception in Virtual Reality",
+    ],
   },
   {
     date: "January 2026",
@@ -521,6 +543,9 @@ export const news: NewsItem[] = [
       "A paper was accepted to ACS Applied Materials & Interfaces.",
     type: "paper",
     image: "/images/news/news_2025_acs.png",
+    papers: [
+      "Wearable Soft Ionic Tactile Controller for Virtual Reality: Decoupling Normal and Shear Forces without Motion Artifacts",
+    ],
   },
   {
     date: "December 2025",
@@ -529,6 +554,9 @@ export const news: NewsItem[] = [
       "A paper was accepted to IEEE Haptics Symposium 2026.",
     type: "paper",
     image: "/images/news/news_2025_haptics.png",
+    papers: [
+      "Effects of Spatiotemporal Parameters on Forearm Vibrotactile Stimulus Identification",
+    ],
   },
   {
     date: "September 2025",
@@ -545,6 +573,9 @@ export const news: NewsItem[] = [
       "A paper was published to Advanced Materials Technologies (Q1 Journal).",
     type: "paper",
     image: "/images/news/news_2025_amt.png",
+    papers: [
+      "Simple-Architectured Elastic Touch Sensor with High Spatiotemporal Resolution",
+    ],
   },
 ];
 
