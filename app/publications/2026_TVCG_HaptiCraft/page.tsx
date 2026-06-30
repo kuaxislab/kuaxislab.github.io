@@ -86,14 +86,16 @@ const vrScenarios = [
 ];
 
 const bibtex = `@article{park2026hapticraft,
-  title   = {HaptiCraft: A Modular Multimodal Haptic Controller
-             for Immersive Virtual Reality Interactions},
-  author  = {Park, Chaeyong and Kim, Jeongwoo and Song, Yuk-Gwon
-             and Kim, Sang-Youn and Choi, Seungmoon},
-  journal = {IEEE Transactions on Visualization and Computer Graphics},
-  year    = {2026},
-  doi     = {10.1109/TVCG.2026.3683951}
+  author={Park, Chaeyong and Kim, Jeongwoo and Song, Yuk-Gwon and Kim, Sang-Youn and Choi, Seungmoon},
+  journal={IEEE Transactions on Visualization and Computer Graphics}, 
+  title={HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions}, 
+  year={2026},
+  volume={32},
+  number={7},
+  pages={6493-6506},
+  doi={10.1109/TVCG.2026.3683951}
 }`;
+
 
 function CopyBibtex() {
   const [copied, setCopied] = useState(false);
