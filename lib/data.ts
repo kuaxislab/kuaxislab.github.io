@@ -441,6 +441,22 @@ export interface NewsItem {
 export const news: NewsItem[] = [
   // ── 2026 ────────────────────────────────────────────────────────────────
   {
+    date: "August 2026",
+    year: 2026,
+    description:
+      "Our research paper received the Best Paper Honorable Mention Award! Congratulations to Hyeseong and Jaehyeong!",
+    type: "award",
+    image: "/images/news/news_khc2026_award.png",
+  },
+  {
+    date: "August 2026",
+    year: 2026,
+    description:
+      "AXIS Lab participated in the 4th Korea Haptics Conference (KHC 2026). Chaeyong introduced our lab at the Newcomer Research & Lab Session, and Jaehyeong and Hyeseong presented their recent research papers in the oral sessions.",
+    type: "event",
+    image: "/images/news/news_khc2026.png",
+  },
+  {
     date: "June 2026",
     year: 2026,
     description:

@@ -12,10 +12,10 @@ function AlbumCard({ album, index }: { album: typeof galleryAlbums[0]; index: nu
   const thumbnail = album.images[0];
 
   return (
-    <AnimatedSection delay={index * 0.08}>
-      <Link href={`/gallery/${album.id}`} className="group block card overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <AnimatedSection delay={index * 0.08} className="h-full">
+      <Link href={`/gallery/${album.id}`} className="group flex h-full flex-col card overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
         {/* Thumbnail */}
-        <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+        <div className="relative aspect-[4/3] shrink-0 bg-slate-100 overflow-hidden">
           {!thumbErr ? (
             <Image
               src={thumbnail}
@@ -36,7 +36,7 @@ function AlbumCard({ album, index }: { album: typeof galleryAlbums[0]; index: nu
         </div>
 
         {/* Info */}
-        <div className="p-4 sm:p-5 flex items-center justify-between gap-3">
+        <div className="flex-1 p-4 sm:p-5 flex items-center justify-between gap-3">
           <div>
             <h3 className="font-bold text-slate-900 text-base leading-snug group-hover:text-teal-600 transition-colors">
               {album.title}
