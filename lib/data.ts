@@ -444,7 +444,7 @@ export const news: NewsItem[] = [
     date: "August 2026",
     year: 2026,
     description:
-      "Our research paper received the Best Paper Honorable Mention Award! Congratulations to Hyeseong and Jaehyeong!",
+      "Our research paper received the Best Paper Honorable Mention Award at KHC 2026. Congratulations to Hyeseong and Jaehyeong!",
     type: "award",
     image: "/images/news/news_khc2026_award.png",
   },
