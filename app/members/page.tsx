@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Mail, ExternalLink, GraduationCap, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { professor, students } from "@/lib/data";
+import { professor, students, interns } from "@/lib/data";
 import type { Member } from "@/lib/data";
 import Link from "next/link";
 
@@ -78,6 +78,7 @@ function StudentCard({ member, index }: { member: Member; index: number }) {
         </div>
         <div>
           <h3 className="font-bold text-slate-900 text-base mb-0.5">{member.name}</h3>
+          {member.koreanName && <p className="text-sm text-slate-500 mb-1">{member.koreanName}</p>}
           <p className="text-sm text-teal-600 font-medium mb-1">{member.role}</p>
           {member.since && <p className="text-sm text-slate-400">Starting {member.since}</p>}
           {member.email && (
@@ -117,6 +118,19 @@ export default function MembersPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
             {students.map((student, i) => (
               <StudentCard key={student.name} member={student} index={i} />
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-14">
+          <AnimatedSection className="mb-6">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 flex items-center gap-2">
+              <span className="w-4 h-px bg-teal-500" />Research Interns
+            </h2>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+            {interns.map((intern, i) => (
+              <StudentCard key={intern.name} member={intern} index={i} />
             ))}
           </div>
         </section>

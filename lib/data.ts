@@ -606,6 +606,7 @@ export type MemberRole =
 
 export interface Member {
   name: string;
+  koreanName?: string;
   role: MemberRole;
   email: string;
   photo: string;
@@ -636,34 +637,46 @@ export const professor: Member = {
 
 export const students: Member[] = [
   {
-    name: "Heeyeon Kim",
-    role: "PhD Student",
-    email: "",
-    photo: "/images/members/heeyeon-kim.jpg",
-    status: "incoming",
-    since: "Fall 2026",
-  },
-  {
     name: "Jaehyeong Hwang",
+    koreanName: "황재형",
     role: "MS-PhD Student",
     email: "",
     photo: "/images/members/jaehyeong-hwang.png",
-    status: "incoming",
-    since: "Fall 2026",
+    status: "current",
   },
   {
     name: "Hyeseong Jin",
+    koreanName: "진혜성",
     role: "BS-PhD Student",
     email: "",
     photo: "/images/members/hyeseong-jin.jpg",
-    status: "incoming",
-    since: "Fall 2026",
+    status: "current",
+  },
+];
+
+export const interns: Member[] = [
+  {
+    name: "Heeyeon Kim",
+    koreanName: "김희연",
+    role: "Research Intern",
+    email: "",
+    photo: "/images/members/heeyeon-kim.jpg",
+    status: "current",
   },
   {
     name: "Jae-Yong Choi",
+    koreanName: "최재용",
     role: "Research Intern",
     email: "",
     photo: "/images/members/jae-yong-choi.jpg",
+    status: "current",
+  },
+  {
+    name: "Heewon Jeong",
+    koreanName: "정희원",
+    role: "Research Intern",
+    email: "",
+    photo: "/images/members/heewon-jeong.jpeg",
     status: "current",
   },
 ];
