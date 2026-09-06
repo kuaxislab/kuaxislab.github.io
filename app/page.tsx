@@ -4,9 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight, Hand, Glasses, Cpu, ExternalLink } from "lucide-react";
+import { ArrowRight, ChevronRight, Hand, Glasses, Cpu, ExternalLink, Mic, Clock, MapPin, Presentation, CalendarDays } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { news, researchAreas } from "@/lib/data";
+import { news, researchAreas, upcomingConference } from "@/lib/data";
+import type { Presentation as PresentationItem } from "@/lib/data";
 
 const iconMap = { hand: Hand, vr: Glasses, circuit: Cpu };
 
@@ -35,6 +36,49 @@ function HeroImage() {
         </div>
       )}
     </div>
+  );
+}
+
+function PresentationCard({ item, index }: { item: PresentationItem; index: number }) {
+  return (
+    <AnimatedSection delay={index * 0.1} className="h-full">
+      <div className="group card h-full flex flex-col overflow-hidden border-t-4 border-teal-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+        <div className="p-5 sm:p-6 flex-1 flex flex-col">
+          <span className="badge badge-teal self-start mb-3">{item.kind}</span>
+
+          <h3 className="font-bold text-slate-900 text-base leading-snug mb-3">
+            {item.title}
+          </h3>
+
+          <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
+            <Mic size={14} className="shrink-0 text-teal-500" />
+            <span className="font-semibold text-slate-700">{item.presenter}</span>
+          </div>
+
+          <dl className="mt-auto pt-4 border-t border-slate-100 space-y-2 text-sm text-slate-500">
+            <div className="flex items-start gap-2">
+              <Presentation size={14} className="mt-0.5 shrink-0 text-slate-300" />
+              <dd className="leading-snug">
+                {item.session}
+                {item.talkNumber && (
+                  <span className="ml-1.5 inline-block whitespace-nowrap font-semibold text-teal-600">
+                    (Talk {item.talkNumber})
+                  </span>
+                )}
+              </dd>
+            </div>
+            <div className="flex items-start gap-2">
+              <Clock size={14} className="mt-0.5 shrink-0 text-slate-300" />
+              <dd className="leading-snug">{item.time}</dd>
+            </div>
+            <div className="flex items-start gap-2">
+              <MapPin size={14} className="mt-0.5 shrink-0 text-slate-300" />
+              <dd className="leading-snug">{item.location}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </AnimatedSection>
   );
 }
 
@@ -79,6 +123,31 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── Upcoming Conference ── */}
+      {upcomingConference && (
+        <section className="py-12 lg:py-16 bg-gradient-to-b from-white to-teal-50/50 border-t border-slate-100">
+          <div className="container-main">
+            <AnimatedSection>
+              <div className="mb-7">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-teal-600 mb-2">
+                  <CalendarDays size={14} />Upcoming Presentations
+                </p>
+                <h2 className="section-title">{upcomingConference.heading}</h2>
+                {upcomingConference.subtitle && (
+                  <p className="text-base text-slate-500 mt-1.5">{upcomingConference.subtitle}</p>
+                )}
+              </div>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+              {upcomingConference.presentations.map((item, i) => (
+                <PresentationCard key={item.title} item={item} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Recent News ── */}
       <section className="section-padding bg-slate-50/70">
@@ -173,7 +242,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-16 sm:py-20 bg-gradient-to-r from-teal-600 to-teal-500">
+      <section className="py-14 lg:py-16 bg-gradient-to-r from-teal-600 to-teal-500">
         <AnimatedSection>
           <div className="container-main text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4">We are looking for passionate researchers.</h2>

@@ -681,6 +681,65 @@ export const interns: Member[] = [
   },
 ];
 
+// ─── Upcoming Conference Presentations ──────────────────────────────
+
+export interface Presentation {
+  title: string;
+  presenter: string;
+  session: string;
+  /** Order of this talk within its session (1 = first). */
+  talkNumber?: number;
+  time: string;
+  location: string;
+  kind: "Journal Paper" | "Conference Paper";
+}
+
+export interface ConferenceFeature {
+  name: string;
+  heading: string;
+  subtitle?: string;
+  presentations: Presentation[];
+}
+
+// Set to null to hide the section from the home page.
+export const upcomingConference: ConferenceFeature | null = {
+  name: "IEEE ISMAR 2026",
+  heading: "IEEE ISMAR 2026 Presentations",
+  subtitle: "October 7–8, 2026 · Bari, Italy",
+  presentations: [
+    {
+      title:
+        "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
+      presenter: "Chaeyong Park",
+      talkNumber: 1,
+      session: "PS11: Vibrotactile Haptics",
+      time: "Wed, Oct 7 · 14:15–15:15",
+      location: "Cigno + Auriga",
+      kind: "Journal Paper",
+    },
+    {
+      title:
+        "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
+      presenter: "Jaehyeong Hwang",
+      talkNumber: 2,
+      session: "PS11: Vibrotactile Haptics",
+      time: "Wed, Oct 7 · 14:15–15:15",
+      location: "Cigno + Auriga",
+      kind: "Journal Paper",
+    },
+    {
+      title:
+        "Feeling Visual Motion: Mitigating Cybersickness in VR Using Tactile Motion Cues",
+      presenter: "Hyeseong Jin",
+      talkNumber: 3,
+      session: "PS26: Cybersickness Mitigation",
+      time: "Thu, Oct 8 · 11:45–12:45",
+      location: "Cigno + Auriga",
+      kind: "Conference Paper",
+    },
+  ],
+};
+
 // ─── Research Areas ───────────────────────────────────────────────────────────
 
 export interface ResearchArea {
