@@ -22,6 +22,14 @@ const awardStyle = {
   "Best Paper Honorable Mention Award": "badge-gold",
 };
 
+const typeTag: Record<string, { label: string; cls: string }> = {
+  journal:    { label: "Journal",    cls: "bg-sky-50 text-sky-700 ring-sky-100" },
+  conference: { label: "Conference", cls: "bg-teal-50 text-teal-700 ring-teal-100" },
+  demo:       { label: "Demo",       cls: "bg-violet-50 text-violet-600 ring-violet-100" },
+  poster:     { label: "Poster",     cls: "bg-indigo-50 text-indigo-600 ring-indigo-100" },
+  workshop:   { label: "Workshop",   cls: "bg-slate-100 text-slate-500 ring-slate-200" },
+};
+
 function PubThumb({ src }: { src: string }) {
   const [err, setErr] = useState(false);
   return (
@@ -42,6 +50,13 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
       <div className="flex flex-col sm:flex-row gap-4 py-5 border-b border-slate-100 last:border-0 hover:bg-slate-50/50 -mx-4 px-4 rounded-xl transition-colors">
         <PubThumb src={thumb} />
         <div className="flex-1 min-w-0">
+          {typeTag[pub.type] && (
+            <div className="mb-1">
+              <span className={`inline-flex items-center px-1.5 py-0.5 rounded ring-1 ring-inset text-[10px] font-semibold uppercase tracking-[0.07em] ${typeTag[pub.type].cls}`}>
+                {typeTag[pub.type].label}
+              </span>
+            </div>
+          )}
           <div className="mb-1.5 group/row">
             {pub.slug ? (
               <>
@@ -72,7 +87,6 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
           <p className="text-base text-slate-500 mb-1.5">{pub.authors}</p>
           <div className="flex flex-wrap items-center gap-2">
             <span className={`font-medium italic text-sm ${venueColor}`}>{pub.venue}</span>
-            {pub.type === "poster" && <span className="badge badge-slate">Poster</span>}
             {pub.note && <span className="badge badge-slate">{pub.note}</span>}
             {pub.award && (
               <span className={`badge ${awardStyle[pub.award]}`}>
@@ -88,7 +102,7 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
 
 function YearSection({ year, pubs }: { year: string | number; pubs: Publication[] }) {
   const paperCount = pubs.filter((p) => p.type === "journal" || p.type === "conference").length;
-  const posterCount = pubs.filter((p) => p.type === "poster" || p.type === "workshop").length;
+  const posterCount = pubs.filter((p) => p.type === "poster" || p.type === "workshop" || p.type === "demo").length;
   const countLabel = [
     paperCount > 0 && `${paperCount} paper${paperCount > 1 ? "s" : ""}`,
     posterCount > 0 && `${posterCount} poster${posterCount > 1 ? "s" : ""}`,

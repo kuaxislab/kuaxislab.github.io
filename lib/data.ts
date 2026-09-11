@@ -5,7 +5,7 @@ export type Award =
   | "Best Paper Nomination"
   | "Best Paper Honorable Mention Award";
 
-export type PubType = "journal" | "conference" | "workshop" | "poster";
+export type PubType = "journal" | "conference" | "workshop" | "poster" | "demo";
 
 export interface Publication {
   title: string;
@@ -22,15 +22,18 @@ export interface Publication {
 
 export const publications: Publication[] = [
   // ── Under Review ────────────────────────────────────────────────────────
-  {
-    title: "Fingertip Pressure Feedback Increases the Perceived Length of a Handheld Object",
-    authors: "Chaeyong Park et al.",
-    venue: "Under Review (Major Revision)",
-    year: "Under Review",
-    type: "journal",
-  },
 
   // ── 2026 ────────────────────────────────────────────────────────────────
+  {
+    title:
+      "Fingertip Pressure Feedback Increases the Perceived Length of a Handheld Object",
+    authors:
+      "Jeongwoo Kim, Hyunyong Park, Chaeyong Park, Seungmoon Choi",
+    venue: "IEEE Transactions on Haptics",
+    year: 2026,
+    type: "journal",
+    thumbnail: "/images/publications/2026_toh_b.png",
+  },
   {
     title:
       "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
@@ -164,7 +167,7 @@ export const publications: Publication[] = [
     venue: "IEEE World Haptics Conference 2025",
     year: 2025,
     award: "Best Paper Honorable Mention Award",
-    type: "workshop",
+    type: "poster",
     note: "Work-in-Progress",
     thumbnail: "/images/publications/haptic_gaming_whc25.png",
   },
@@ -175,7 +178,7 @@ export const publications: Publication[] = [
       "Junwoo Kim, Jaejun Park, Chaeyong Park, Junseok Park, Seungmoon Choi",
     venue: "IEEE World Haptics Conference 2025",
     year: 2025,
-    type: "workshop",
+    type: "poster",
     note: "Work-in-Progress",
     thumbnail: "/images/publications/spatio_temporal_whc25.png",
   },
@@ -186,7 +189,7 @@ export const publications: Publication[] = [
       "Dong-Geun Kim, Suheon Nam, Chaeyong Park, Geunho Lee, Seungmoon Choi",
     venue: "IEEE World Haptics Conference 2025",
     year: 2025,
-    type: "workshop",
+    type: "poster",
     note: "Work-in-Progress",
     thumbnail: "/images/publications/tactile_localization_whc25.png",
   },
@@ -440,6 +443,17 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
   // ── 2026 ────────────────────────────────────────────────────────────────
+  {
+    date: "September 2026",
+    year: 2026,
+    description:
+      "A paper was accepted to IEEE Transactions on Haptics.",
+    type: "paper",
+    image: "/images/news/news_2026_toh.png",
+    papers: [
+      "Fingertip Pressure Feedback Increases the Perceived Length of a Handheld Object",
+    ],
+  },
   {
     date: "August 2026",
     year: 2026,
