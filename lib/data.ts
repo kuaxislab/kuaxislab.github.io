@@ -3,7 +3,8 @@
 export type Award =
   | "Best Paper Award"
   | "Best Paper Nomination"
-  | "Best Paper Honorable Mention Award";
+  | "Best Paper Honorable Mention Award"
+  | "Best Poster Honorable Mention Award";
 
 export type PubType = "journal" | "conference" | "workshop" | "poster" | "demo";
 
@@ -166,7 +167,7 @@ export const publications: Publication[] = [
     authors: "Heeji Sohn, Chaeyong Park, Seungmoon Choi",
     venue: "IEEE World Haptics Conference 2025",
     year: 2025,
-    award: "Best Paper Honorable Mention Award",
+    award: "Best Poster Honorable Mention Award",
     type: "poster",
     note: "Work-in-Progress",
     thumbnail: "/images/publications/haptic_gaming_whc25.png",
