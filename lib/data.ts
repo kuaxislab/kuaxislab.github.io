@@ -21,6 +21,11 @@ export interface Publication {
   slug?: string;
 }
 
+export const underReview = {
+  count: 6,
+  breakdown: "5 CHI papers and 1 IEEE VR paper",
+};
+
 export const publications: Publication[] = [
   // ── Under Review ────────────────────────────────────────────────────────
 

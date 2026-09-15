@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ExternalLink, Award, Star, Trophy } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { publications } from "@/lib/data";
+import { publications, underReview } from "@/lib/data";
 import type { Publication } from "@/lib/data";
 
 const DEFAULT_THUMB = "/images/publications/2026_tvcg.png";
@@ -139,6 +139,10 @@ export default function PublicationsPage() {
         <AnimatedSection className="mb-14">
           <h1 className="section-title mb-3">Publications</h1>
         </AnimatedSection>
+
+        <p className="text-sm text-slate-400 -mt-8 mb-8">
+          {underReview.count} more currently under review <span className="text-slate-300">·</span> {underReview.breakdown}
+        </p>
 
 {years.map((year) => <YearSection key={year} year={year} pubs={byYear[year]} />)}
       </div>
