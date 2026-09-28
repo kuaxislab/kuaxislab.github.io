@@ -127,11 +127,11 @@ function CopyBibtex() {
 
 /* 이미지에 딱 맞는 박스 — 모바일: w-full h-auto / 데스크탑: h-고정 w-auto */
 const smHeightMap: Record<string, string> = {
-  "h-56": "sm:h-56", "h-64": "sm:h-64", "h-72": "sm:h-72", "h-80": "sm:h-80",
+  "h-56": "sm:max-h-56", "h-64": "sm:max-h-64", "h-72": "sm:max-h-72", "h-80": "sm:max-h-80",
 };
 function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string; caption?: string; h?: string }) {
   const [err, setErr] = useState(false);
-  const smH = smHeightMap[h] ?? "sm:h-64";
+  const smH = smHeightMap[h] ?? "sm:max-h-64";
   return (
     <div className="flex flex-col items-center w-full">
       {!err ? (
@@ -139,11 +139,11 @@ function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string;
         <img
           src={src}
           alt={alt}
-          className={`w-full h-auto ${smH} sm:w-auto rounded-xl border border-slate-200`}
+          className={`w-full h-auto sm:h-auto sm:w-auto sm:max-w-full ${smH} rounded-xl border border-slate-200`}
           onError={() => setErr(true)}
         />
       ) : (
-        <div className={`w-full ${smH} sm:w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
+        <div className={`w-full ${h} ${smH} sm:w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
           <p className="text-xs text-slate-400 text-center px-2">Add: {src.split("/").pop()}</p>
         </div>
       )}
@@ -189,7 +189,7 @@ export default function SpatiotemporalPage() {
             <span className="badge badge-gold text-sm px-3 py-1">Best Paper Nomination</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6 max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
             {paper.title}
           </h1>
 
@@ -224,7 +224,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Abstract
             </h2>
-            <p className="text-base text-slate-600 leading-relaxed">{paper.abstract}</p>
+            <p className="text-base text-slate-600 leading-relaxed text-justify">{paper.abstract}</p>
           </AnimatedSection>
         </div>
       </section>
@@ -243,7 +243,7 @@ export default function SpatiotemporalPage() {
                   <span className="shrink-0 w-7 h-7 rounded-full bg-teal-500 text-white text-sm font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
-                  <p className="text-base text-slate-600 leading-relaxed">{c}</p>
+                  <p className="text-base text-slate-600 leading-relaxed text-justify">{c}</p>
                 </li>
               ))}
             </ul>
@@ -259,7 +259,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Experimental Apparatus
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               ERM (Eccentric Rotating Mass) motors were used as vibrotactile actuators, driven by PWM signals from an Arduino Due. Tactors were mounted on adjustable velcro bands and positioned along the distal–proximal forearm axis, distributed across palmar, dorsal, medial, and lateral surfaces.
             </p>
           </AnimatedSection>
@@ -300,7 +300,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-coral-500 rounded-full inline-block" />
               Exp. 1–3: Effects of Spatial Factors
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               Three experiments systematically varied the number and arrangement of tactors to establish the spatial limits of forearm vibrotactile localization.
             </p>
           </AnimatedSection>
@@ -341,7 +341,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-gold-500 rounded-full inline-block" />
               Exp. 4–6: Effects of Temporal Factors
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               Using the optimal spatial configurations from Exp. 1–3, three further experiments examined vibration duration, inter-stimulus interval, and sequence length.
             </p>
           </AnimatedSection>
@@ -381,7 +381,7 @@ export default function SpatiotemporalPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Design Guidelines for Wearable Tactile Displays
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               Based on the six experiments, these guidelines inform the design of compact, efficient forearm-mounted vibrotactile displays for tactile communication.
             </p>
           </AnimatedSection>

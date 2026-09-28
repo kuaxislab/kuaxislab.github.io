@@ -49,6 +49,7 @@ export const publications: Publication[] = [
     type: "journal",
     note: "Q1 Journal · JCR top 7.4% · Conditionally Accepted",
     thumbnail: "/images/publications/2026_ismar_a.png",
+    slug: "2026_TVCG_PostureAdaptive",
   },
   {
     title:
@@ -59,6 +60,7 @@ export const publications: Publication[] = [
     type: "journal",
     note: "Q1 Journal · JCR top 7.4% · Conditionally Accepted",
     thumbnail: "/images/publications/2026_ismar_c.png",
+    slug: "2026_TVCG_RestFrame",
   },
   {
     title:
@@ -69,6 +71,7 @@ export const publications: Publication[] = [
     type: "conference",
     note: "Conditionally Accepted",
     thumbnail: "/images/publications/2026_ismar_b.png",
+    slug: "2026_ISMAR_TactileMotion",
   },
   {
     title:

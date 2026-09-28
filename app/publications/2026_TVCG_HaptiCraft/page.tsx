@@ -85,15 +85,15 @@ const vrScenarios = [
   { name: "Frying Pan", haptics: "Inertia only" },
 ];
 
-const bibtex = `@article{park2026hapticraft,
-  author={Park, Chaeyong and Kim, Jeongwoo and Song, Yuk-Gwon and Kim, Sang-Youn and Choi, Seungmoon},
-  journal={IEEE Transactions on Visualization and Computer Graphics}, 
-  title={HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions}, 
-  year={2026},
-  volume={32},
-  number={7},
-  pages={6493-6506},
-  doi={10.1109/TVCG.2026.3683951}
+const bibtex = `@article{Park2026:hapticraft,
+    author={Park, Chaeyong and Kim, Jeongwoo and Song, Yuk-Gwon and Kim, Sang-Youn and Choi, Seungmoon},
+    journal={IEEE Transactions on Visualization and Computer Graphics}, 
+    title={HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions}, 
+    year={2026},
+    volume={32},
+    number={7},
+    pages={6493-6506},
+    doi={10.1109/TVCG.2026.3683951}
 }`;
 
 
@@ -174,7 +174,7 @@ export default function HaptiCraftPage() {
             <span className="badge badge-slate text-sm px-3 py-1">Q1 Journal &middot; JCR top 5.4%</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6 max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
             {paper.title}
           </h1>
 
@@ -229,7 +229,7 @@ export default function HaptiCraftPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Abstract
             </h2>
-            <p className="text-base text-slate-600 leading-relaxed">{paper.abstract}</p>
+            <p className="text-base text-slate-600 leading-relaxed text-justify">{paper.abstract}</p>
           </AnimatedSection>
         </div>
       </section>
@@ -248,7 +248,7 @@ export default function HaptiCraftPage() {
                   <span className="shrink-0 w-7 h-7 rounded-full bg-teal-500 text-white text-sm font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
-                  <p className="text-base text-slate-600 leading-relaxed">{c}</p>
+                  <p className="text-base text-slate-600 leading-relaxed text-justify">{c}</p>
                 </li>
               ))}
             </ul>
@@ -264,7 +264,7 @@ export default function HaptiCraftPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               HaptiCraft Modules
             </h2>
-            <p className="text-base text-slate-500 mb-10 max-w-2xl">
+            <p className="text-base text-slate-500 mb-10 text-justify">
               Each module serves a distinct function and can be freely assembled with magnetic pogo-pin connectors, sharing power from a single battery module.
             </p>
           </AnimatedSection>
@@ -325,12 +325,12 @@ export default function HaptiCraftPage() {
             <div className="flex flex-wrap gap-6 justify-center items-start">
               <div className="flex flex-col items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/pub_pages/hapticraft/fig9.png" alt="GUI of HaptiCraft authoring tool" className="w-full h-auto sm:h-64 sm:w-auto rounded-xl border border-slate-200" />
+                <img src="/images/pub_pages/hapticraft/fig9.png" alt="GUI of HaptiCraft authoring tool" className="w-full h-auto sm:h-auto sm:w-auto sm:max-w-full sm:max-h-64 rounded-xl border border-slate-200" />
                 <p className="text-sm text-slate-400 text-center mt-2 italic">Fig. 9. GUI of the HaptiCraft authoring tool.</p>
               </div>
               <div className="flex flex-col items-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/pub_pages/hapticraft/fig12.png" alt="TAM results of authoring tool user study" className="w-full h-auto sm:h-64 sm:w-auto rounded-xl border border-slate-200" />
+                <img src="/images/pub_pages/hapticraft/fig12.png" alt="TAM results of authoring tool user study" className="w-full h-auto sm:h-auto sm:w-auto sm:max-w-full sm:max-h-64 rounded-xl border border-slate-200" />
                 <p className="text-sm text-slate-400 text-center mt-2 italic">Fig. 12. Technology Acceptance Model (TAM) for the controller authoring tool.</p>
               </div>
             </div>
@@ -346,7 +346,7 @@ export default function HaptiCraftPage() {
               <span className="w-8 h-1 bg-gold-500 rounded-full inline-block" />
               Summative VR User Study
             </h2>
-            <p className="text-base text-slate-500 mb-10">
+            <p className="text-base text-slate-500 mb-10 text-justify">
               18 participants evaluated HaptiCraft Multimodal (HAP-MM), HaptiCraft Unimodal (HAP-UM), and a commercial controller (COM) across 7 VR scenarios, rating Realism, Immersion, Harmony, and Enjoyment.
             </p>
           </AnimatedSection>

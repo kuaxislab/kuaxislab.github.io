@@ -113,11 +113,11 @@ function PaperImage({ src, alt, caption }: { src: string; alt: string; caption?:
 /* 고정 높이 + 자연 너비 — 이미지에 딱 맞는 박스, letterbox 없음
    모바일: w-full h-auto / 데스크탑: h-고정 w-auto */
 const smHeightMap: Record<string, string> = {
-  "h-56": "sm:h-56", "h-64": "sm:h-64", "h-72": "sm:h-72", "h-80": "sm:h-80",
+  "h-56": "sm:max-h-56", "h-64": "sm:max-h-64", "h-72": "sm:max-h-72", "h-80": "sm:max-h-80",
 };
 function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string; caption?: string; h?: string }) {
   const [err, setErr] = useState(false);
-  const smH = smHeightMap[h] ?? "sm:h-64";
+  const smH = smHeightMap[h] ?? "sm:max-h-64";
   return (
     <div className="flex flex-col items-center w-full">
       {!err ? (
@@ -125,11 +125,11 @@ function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string;
         <img
           src={src}
           alt={alt}
-          className={`w-full h-auto ${smH} sm:w-auto rounded-xl border border-slate-200`}
+          className={`w-full h-auto sm:h-auto sm:w-auto sm:max-w-full ${smH} rounded-xl border border-slate-200`}
           onError={() => setErr(true)}
         />
       ) : (
-        <div className={`w-full ${smH} sm:w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
+        <div className={`w-full ${h} ${smH} sm:w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
           <p className="text-xs text-slate-400 text-center px-2">Add: {src.split("/").pop()}</p>
         </div>
       )}
@@ -156,7 +156,7 @@ export default function HapticGamingPage() {
             <span className="badge badge-teal text-sm px-3 py-1">{paper.venueShort} &middot; {paper.year}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6 max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
             {paper.title}
           </h1>
 
@@ -208,7 +208,7 @@ export default function HapticGamingPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Abstract
             </h2>
-            <p className="text-base text-slate-600 leading-relaxed">{paper.abstract}</p>
+            <p className="text-base text-slate-600 leading-relaxed text-justify">{paper.abstract}</p>
           </AnimatedSection>
         </div>
       </section>
@@ -227,7 +227,7 @@ export default function HapticGamingPage() {
                   <span className="shrink-0 w-7 h-7 rounded-full bg-teal-500 text-white text-sm font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
-                  <p className="text-base text-slate-600 leading-relaxed">{c}</p>
+                  <p className="text-base text-slate-600 leading-relaxed text-justify">{c}</p>
                 </li>
               ))}
             </ul>
@@ -243,7 +243,7 @@ export default function HapticGamingPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Study Design
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               A within-subject experiment with 60 participants (36M, 24F; ages 18–32) tested four conditions: Player vs. Spectator × Haptic vs. Non-Haptic. Participants used a custom haptic mouse (3 voice-coil actuators) in an FPS game powered by Aimlabs, with audio-to-haptic conversion for gunshot and footstep events.
             </p>
           </AnimatedSection>
@@ -330,7 +330,7 @@ export default function HapticGamingPage() {
               <span className="w-8 h-1 bg-gold-500 rounded-full inline-block" />
               Results
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               All six hypotheses were supported for both players and spectators (p &lt; .001). The structural model revealed two distinct pathways and notable role-dependent differences.
             </p>
           </AnimatedSection>

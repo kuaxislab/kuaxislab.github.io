@@ -137,7 +137,7 @@ export default function RoboticGraspPage() {
             <span className="badge badge-gold text-sm px-3 py-1">{paper.note}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6 max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
             {paper.title}
           </h1>
 
@@ -195,7 +195,7 @@ export default function RoboticGraspPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Abstract
             </h2>
-            <p className="text-base text-slate-600 leading-relaxed">{paper.abstract}</p>
+            <p className="text-base text-slate-600 leading-relaxed text-justify">{paper.abstract}</p>
           </AnimatedSection>
         </div>
       </section>
@@ -214,7 +214,7 @@ export default function RoboticGraspPage() {
                   <span className="shrink-0 w-7 h-7 rounded-full bg-teal-500 text-white text-sm font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
-                  <p className="text-base text-slate-600 leading-relaxed">{c}</p>
+                  <p className="text-base text-slate-600 leading-relaxed text-justify">{c}</p>
                 </li>
               ))}
             </ul>
@@ -230,7 +230,7 @@ export default function RoboticGraspPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               E-skin Characterization &amp; TSM Validation
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               The bilayer E-skin was characterized for its decoupled sensing capabilities. Temperature sensing (via ionic relaxation time τ) remained unaffected by strain up to 50%. Strain sensing (via normalized capacitance C/C₀) was temperature-independent across 20–60°C. The piezoresistive pressure layer was shear-insensitive, thanks to a low-friction talc interface. Both layers maintained stable performance over 1,000 loading cycles. TSM was experimentally validated on a robotic gripper grasping a spherical object under controlled push disturbances, demonstrating proactive stability feedback.
             </p>
           </AnimatedSection>
@@ -279,7 +279,7 @@ export default function RoboticGraspPage() {
               <span className="w-8 h-1 bg-coral-500 rounded-full inline-block" />
               Robotic Demonstrations
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               The TSM framework was validated in two representative robotic scenarios. In the thermal test, the robot monitored both temperature and TSM to safely grasp and handle a hot water-filled glass. In the pick-and-place task, the robot detected off-center grasping instability from TSM and autonomously repositioned to the center of mass.
             </p>
           </AnimatedSection>
@@ -311,7 +311,7 @@ export default function RoboticGraspPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Key Findings
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               The TSM-based E-skin represents a fundamental shift from reactive to proactive tactile sensing in robotic manipulation.
             </p>
           </AnimatedSection>

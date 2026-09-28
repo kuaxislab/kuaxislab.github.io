@@ -96,11 +96,11 @@ const bibtex = `@article{Kim2026:representing,
   doi={10.1109/TOH.2026.3667214}}`;
 
 const smHeightMap: Record<string, string> = {
-  "h-56": "sm:h-56", "h-64": "sm:h-64", "h-72": "sm:h-72", "h-80": "sm:h-80", "h-96": "sm:h-96",
+  "h-56": "sm:max-h-56", "h-64": "sm:max-h-64", "h-72": "sm:max-h-72", "h-80": "sm:max-h-80", "h-96": "sm:max-h-96",
 };
 function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string; caption?: string; h?: string }) {
   const [err, setErr] = useState(false);
-  const smH = smHeightMap[h] ?? "sm:h-64";
+  const smH = smHeightMap[h] ?? "sm:max-h-64";
   return (
     <div className="flex flex-col items-center w-full">
       {!err ? (
@@ -108,11 +108,11 @@ function FitImage({ src, alt, caption, h = "h-64" }: { src: string; alt: string;
         <img
           src={src}
           alt={alt}
-          className={`w-full h-auto ${smH} sm:w-auto rounded-xl border border-slate-200`}
+          className={`w-full h-auto sm:h-auto sm:w-auto sm:max-w-full ${smH} rounded-xl border border-slate-200`}
           onError={() => setErr(true)}
         />
       ) : (
-        <div className={`w-full ${smH} sm:w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
+        <div className={`w-full ${h} ${smH} sm:w-48 rounded-xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center`}>
           <p className="text-xs text-slate-400 text-center px-2">Add: {src.split("/").pop()}</p>
         </div>
       )}
@@ -151,7 +151,7 @@ export default function EgocentricDirectionPage() {
             <span className="badge badge-teal text-sm px-3 py-1">{paper.venueShort} &middot; {paper.year}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6 max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
             {paper.title}
           </h1>
 
@@ -207,7 +207,7 @@ export default function EgocentricDirectionPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Abstract
             </h2>
-            <p className="text-base text-slate-600 leading-relaxed">{paper.abstract}</p>
+            <p className="text-base text-slate-600 leading-relaxed text-justify">{paper.abstract}</p>
           </AnimatedSection>
         </div>
       </section>
@@ -226,7 +226,7 @@ export default function EgocentricDirectionPage() {
                   <span className="shrink-0 w-7 h-7 rounded-full bg-teal-500 text-white text-sm font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
-                  <p className="text-base text-slate-600 leading-relaxed">{c}</p>
+                  <p className="text-base text-slate-600 leading-relaxed text-justify">{c}</p>
                 </li>
               ))}
             </ul>
@@ -242,7 +242,7 @@ export default function EgocentricDirectionPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Apparatus
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               A commercial haptic vest (bHaptics TactSuit X40) was customized to precisely control vibration positions on the torso. Vibration motors were removed from the inner vest and placed into 3D-printed housings mounted on three adjustable belt straps. Each belt contained eight motors arranged at cardinal and intercardinal directions. An additional motor was affixed to each shoulder, yielding 26 stimulation points in total. Real stimuli (10 G, 61 Hz) and illusory stimuli (funneling illusion, 7 G each) were delivered to represent azimuths and elevations.
             </p>
           </AnimatedSection>
@@ -283,7 +283,7 @@ export default function EgocentricDirectionPage() {
               <span className="w-8 h-1 bg-coral-500 rounded-full inline-block" />
               Exp. I: Azimuth &amp; Elevation Identification
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               Two experiments measured how accurately participants identified vibrotactile cues representing azimuth (Exp. I-1, 8 or 16 directions) and elevation (Exp. I-2, 6–13 levels). Both compared real-only (REL) and real+illusory (R+I) stimulus conditions.
             </p>
           </AnimatedSection>
@@ -337,7 +337,7 @@ export default function EgocentricDirectionPage() {
               <span className="w-8 h-1 bg-gold-500 rounded-full inline-block" />
               Exp. II: Direction Association &amp; Regression Models
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               Two experiments measured how participants naturally associate vibrotactile stimuli with egocentric directions — azimuth (Exp. II-1) and elevation (Exp. II-2) — without explicit training constraints. Fourier regression models were fit to characterize the physical-to-perceived angle mapping.
             </p>
           </AnimatedSection>
@@ -391,7 +391,7 @@ export default function EgocentricDirectionPage() {
               <span className="w-8 h-1 bg-teal-500 rounded-full inline-block" />
               Key Findings &amp; Design Implications
             </h2>
-            <p className="text-base text-slate-500 mb-8">
+            <p className="text-base text-slate-500 mb-8 text-justify">
               Findings from all four experiments offer practical guidelines for designing torso-based vibrotactile directional displays.
             </p>
           </AnimatedSection>
