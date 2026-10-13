@@ -156,7 +156,6 @@ export default function RestFramePage() {
           <div className="flex flex-wrap gap-2 mb-5">
             <span className="badge badge-teal text-sm px-3 py-1">{paper.venueShort} &middot; {paper.year}</span>
             <span className="badge badge-slate text-sm px-3 py-1">Q1 Journal &middot; JCR top 7.4%</span>
-            <span className="badge badge-gold text-sm px-3 py-1">Conditionally Accepted</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">

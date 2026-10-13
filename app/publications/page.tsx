@@ -23,6 +23,12 @@ const awardStyle = {
   "Best Paper Honorable Mention Award":   "badge-gold",
   "Best Poster Honorable Mention Award":  "badge-gold",
 };
+const awardEmoji = {
+  "Best Paper Award":                    "🏆",
+  "Best Paper Nomination":               "🏅",
+  "Best Paper Honorable Mention Award":   "🏅",
+  "Best Poster Honorable Mention Award":  "🏅",
+};
 
 const typeTag: Record<string, { label: string; cls: string }> = {
   journal:    { label: "Journal",    cls: "bg-sky-50 text-sky-700 ring-sky-100" },
@@ -65,6 +71,7 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
                 <Link href={`/publications/${pub.slug}`}
                   className="font-semibold text-base text-slate-900 hover:text-teal-600 transition-colors leading-snug"
                 >
+                  {pub.award && <span className="mr-1.5" title={pub.award}>{awardEmoji[pub.award]}</span>}
                   {pub.title}
                 </Link>
                 {pub.doi && (
@@ -79,11 +86,15 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
               <a href={pub.doi} target="_blank" rel="noopener noreferrer"
                 className="group/link font-semibold text-base text-slate-900 hover:text-teal-600 transition-colors leading-snug"
               >
+                {pub.award && <span className="mr-1.5" title={pub.award}>{awardEmoji[pub.award]}</span>}
                 {pub.title}
                 <ExternalLink size={12} className="inline ml-1.5 opacity-0 group-hover/link:opacity-50 transition-opacity" />
               </a>
             ) : (
-              <span className="font-semibold text-base text-slate-900 leading-snug">{pub.title}</span>
+              <span className="font-semibold text-base text-slate-900 leading-snug">
+                {pub.award && <span className="mr-1.5" title={pub.award}>{awardEmoji[pub.award]}</span>}
+                {pub.title}
+              </span>
             )}
           </div>
           <p className="text-base text-slate-500 mb-1.5">{pub.authors}</p>

@@ -47,7 +47,8 @@ export const publications: Publication[] = [
     venue: "IEEE Transactions on Visualization and Computer Graphics (IEEE ISMAR 2026)",
     year: 2026,
     type: "journal",
-    note: "Q1 Journal · JCR top 7.4% · Conditionally Accepted",
+    award: "Best Paper Award",
+    note: "Q1 Journal · JCR top 7.4%",
     thumbnail: "/images/publications/2026_ismar_a.png",
     slug: "2026_TVCG_PostureAdaptive",
   },
@@ -58,7 +59,7 @@ export const publications: Publication[] = [
     venue: "IEEE Transactions on Visualization and Computer Graphics (IEEE ISMAR 2026)",
     year: 2026,
     type: "journal",
-    note: "Q1 Journal · JCR top 7.4% · Conditionally Accepted",
+    note: "Q1 Journal · JCR top 7.4%",
     thumbnail: "/images/publications/2026_ismar_c.png",
     slug: "2026_TVCG_RestFrame",
   },
@@ -69,7 +70,6 @@ export const publications: Publication[] = [
     venue: "IEEE ISMAR 2026",
     year: 2026,
     type: "conference",
-    note: "Conditionally Accepted",
     thumbnail: "/images/publications/2026_ismar_b.png",
     slug: "2026_ISMAR_TactileMotion",
   },
@@ -436,6 +436,14 @@ export const publications: Publication[] = [
   },
 ];
 
+// ─── Home Hero ────────────────────────────────────────────────────────────────
+
+// Photos shown in the rotating hero carousel on the home page, in order.
+export const heroImages: string[] = [
+  "/images/main/team2.png",
+  "/images/main/team1.jpg",
+];
+
 // ─── News ────────────────────────────────────────────────────────────────────
 
 export type NewsType = "paper" | "award" | "event" | "grant" | "service";
@@ -452,6 +460,25 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
   // ── 2026 ────────────────────────────────────────────────────────────────
+  {
+    date: "October 2026",
+    year: 2026,
+    description:
+      "Our paper received the Best Paper Award at IEEE ISMAR 2026 (roughly 1%). Congratulations to Jaehyeong and Hyeseong!",
+    type: "award",
+    image: "/images/news/news_2026_ismar_best.png",
+    papers: [
+      "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
+    ],
+  },
+  {
+    date: "October 2026",
+    year: 2026,
+    description:
+      "AXIS Lab attended IEEE ISMAR 2026 in Bari, Italy, giving four oral paper presentations.",
+    type: "event",
+    image: "/images/news/news_2026_ismar_all.png",
+  },
   {
     date: "September 2026",
     year: 2026,
@@ -636,7 +663,7 @@ export interface Member {
   interests?: string;
   education?: string;
   links?: { label: string; href: string }[];
-  status: "current" | "incoming";
+  status: "current" | "incoming" | "past";
   since?: string;
 }
 
@@ -672,20 +699,12 @@ export const students: Member[] = [
     koreanName: "진혜성",
     role: "BS-PhD Student",
     email: "",
-    photo: "/images/members/hyeseong-jin.jpg",
+    photo: "/images/members/hyeseong-jin.png",
     status: "current",
   },
 ];
 
 export const interns: Member[] = [
-  {
-    name: "Heeyeon Kim",
-    koreanName: "김희연",
-    role: "Research Intern",
-    email: "",
-    photo: "/images/members/heeyeon-kim.jpg",
-    status: "current",
-  },
   {
     name: "Jae-Yong Choi",
     koreanName: "최재용",
@@ -695,12 +714,33 @@ export const interns: Member[] = [
     status: "current",
   },
   {
+    name: "Heeyeon Kim",
+    koreanName: "김희연",
+    role: "Research Intern",
+    email: "",
+    photo: "/images/members/heeyeon-kim.jpg",
+    education: "MS, POSTECH",
+    status: "current",
+  },
+  {
+    name: "Minjae Jo",
+    koreanName: "조민재",
+    role: "Research Intern",
+    email: "",
+    photo: "/images/members/default.png",
+    education: "MS, KAIST",
+    status: "current",
+  },
+];
+
+export const pastInterns: Member[] = [
+  {
     name: "Heewon Jeong",
     koreanName: "정희원",
     role: "Research Intern",
     email: "",
     photo: "/images/members/heewon-jeong.jpeg",
-    status: "current",
+    status: "past",
   },
 ];
 
@@ -725,43 +765,7 @@ export interface ConferenceFeature {
 }
 
 // Set to null to hide the section from the home page.
-export const upcomingConference: ConferenceFeature | null = {
-  name: "IEEE ISMAR 2026",
-  heading: "IEEE ISMAR 2026 Presentations",
-  subtitle: "October 7–8, 2026 · Bari, Italy",
-  presentations: [
-    {
-      title:
-        "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
-      presenter: "Chaeyong Park",
-      talkNumber: 1,
-      session: "PS11: Vibrotactile Haptics",
-      time: "Wed, Oct 7 · 14:15–15:15",
-      location: "Cigno + Auriga",
-      kind: "Journal Paper",
-    },
-    {
-      title:
-        "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
-      presenter: "Jaehyeong Hwang",
-      talkNumber: 2,
-      session: "PS11: Vibrotactile Haptics",
-      time: "Wed, Oct 7 · 14:15–15:15",
-      location: "Cigno + Auriga",
-      kind: "Journal Paper",
-    },
-    {
-      title:
-        "Feeling Visual Motion: Mitigating Cybersickness in VR Using Tactile Motion Cues",
-      presenter: "Hyeseong Jin",
-      talkNumber: 3,
-      session: "PS26: Cybersickness Mitigation",
-      time: "Thu, Oct 8 · 11:45–12:45",
-      location: "Cigno + Auriga",
-      kind: "Conference Paper",
-    },
-  ],
-};
+export const upcomingConference: ConferenceFeature | null = null;
 
 // ─── Research Areas ───────────────────────────────────────────────────────────
 
@@ -770,6 +774,8 @@ export interface ResearchArea {
   title: string;
   shortTitle: string;
   description: string;
+  summary: string;
+  highlight: { title: string; short: string; venue: string };
   details: string[];
   color: "teal" | "coral" | "gold";
   icon: string;
@@ -782,6 +788,12 @@ export const researchAreas: ResearchArea[] = [
     shortTitle: "Haptic Technology",
     description:
       "We develop tactile feedback systems — incorporating vibration, heat, and muscle movement — to create deeply immersive interactions. Our work spans virtual reality, robotics, and human-computer interaction.",
+    summary: "Tactile feedback systems that make interactions in VR, robotics, and HCI feel real.",
+    highlight: {
+      title: "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
+      short: "Posture-Adaptive Azimuthal Guidance",
+      venue: "IEEE TVCG (ISMAR 2026)",
+    },
     details: [
       "Vibrotactile rendering and perception",
       "Multimodal haptic feedback (vibration, heat, kinesthetic)",
@@ -797,6 +809,12 @@ export const researchAreas: ResearchArea[] = [
     shortTitle: "VR / AR Research",
     description:
       "We create multisensory virtual environments that combine visual, auditory, and haptic feedback to produce realistic digital worlds. We also investigate novel input methods designed for natural and intuitive user interactions.",
+    summary: "Multisensory virtual environments, cross-modal perception, and cybersickness mitigation.",
+    highlight: {
+      title: "Feeling Visual Motion: Mitigating Cybersickness in VR Using Tactile Motion Cues",
+      short: "Feeling Visual Motion",
+      venue: "IEEE ISMAR 2026",
+    },
     details: [
       "Immersive VR environment design",
       "Cross-modal perception in VR/AR",
@@ -812,6 +830,12 @@ export const researchAreas: ResearchArea[] = [
     shortTitle: "Interface Prototyping",
     description:
       "We design and fabricate physical interaction devices using techniques ranging from 3D printing to custom circuit design. Our goal is to bridge physical and digital technologies to develop more user-friendly experiences.",
+    summary: "Physical interaction devices, from soft sensors to modular haptic controllers.",
+    highlight: {
+      title: "HaptiCraft: A Modular Multimodal Haptic Controller for Immersive Virtual Reality Interactions",
+      short: "HaptiCraft",
+      venue: "IEEE TVCG 2026",
+    },
     details: [
       "Soft and flexible tactile sensors",
       "Custom haptic actuator design",

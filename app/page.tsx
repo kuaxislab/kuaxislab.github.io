@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight, Hand, Glasses, Cpu, ExternalLink, Mic, Clock, MapPin, Presentation, CalendarDays } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ChevronRight, ChevronLeft, Hand, Glasses, Cpu, ExternalLink } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { news, researchAreas, upcomingConference } from "@/lib/data";
-import type { Presentation as PresentationItem } from "@/lib/data";
+import { news, researchAreas, heroImages, publications } from "@/lib/data";
 
 const iconMap = { hand: Hand, vr: Glasses, circuit: Cpu };
 
@@ -19,12 +18,12 @@ const newsTypeLabel: Record<string, string> = {
   paper: "Paper", award: "Award", grant: "Grant", event: "Event", service: "Service",
 };
 
-function HeroImage() {
+function HeroImage({ src, priority }: { src: string; priority?: boolean }) {
   const [error, setError] = useState(false);
   return (
-    <div className="relative w-full aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl shadow-slate-200/60">
+    <div className="absolute inset-0">
       {!error ? (
-        <Image src="/images/team.jpg" alt="AXIS Lab Team" fill className="object-cover" priority onError={() => setError(true)} />
+        <Image src={src} alt="AXIS Lab" fill className="object-cover" priority={priority} onError={() => setError(true)} />
       ) : (
         <div className="w-full h-full bg-gradient-to-br from-teal-50 via-slate-50 to-coral-50 flex flex-col items-center justify-center gap-3 border-2 border-dashed border-teal-200">
           <div className="flex gap-3">
@@ -32,53 +31,69 @@ function HeroImage() {
             <div className="w-10 h-10 rounded-full bg-coral-400/30" />
             <div className="w-10 h-10 rounded-full bg-gold-400/30" />
           </div>
-          <p className="text-xs text-slate-400 font-medium">Add team photo → public/images/team.jpg</p>
+          <p className="text-xs text-slate-400 font-medium">Photo not found → check heroImages in lib/data.ts</p>
         </div>
       )}
     </div>
   );
 }
 
-function PresentationCard({ item, index }: { item: PresentationItem; index: number }) {
+function HeroCarousel({ images }: { images: string[] }) {
+  const [index, setIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const go = (dir: number) => setIndex((i) => (i + dir + images.length) % images.length);
+
   return (
-    <AnimatedSection delay={index * 0.1} className="h-full">
-      <div className="group card h-full flex flex-col overflow-hidden border-t-4 border-teal-500 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-        <div className="p-5 sm:p-6 flex-1 flex flex-col">
-          <span className="badge badge-teal self-start mb-3">{item.kind}</span>
+    <div
+      className="relative w-full aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl shadow-slate-200/60 bg-slate-100 group"
+      onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+      onTouchEnd={(e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX.current;
+        if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+      }}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.35 }}
+          className="absolute inset-0"
+        >
+          <HeroImage src={images[index]} priority={index === 0} />
+        </motion.div>
+      </AnimatePresence>
 
-          <h3 className="font-bold text-slate-900 text-base leading-snug mb-3">
-            {item.title}
-          </h3>
-
-          <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
-            <Mic size={14} className="shrink-0 text-teal-500" />
-            <span className="font-semibold text-slate-700">{item.presenter}</span>
+      {images.length > 1 && (
+        <>
+          <button
+            aria-label="Previous photo"
+            onClick={() => go(-1)}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 backdrop-blur flex items-center justify-center shadow opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-white"
+          >
+            <ChevronLeft size={18} className="text-slate-700" />
+          </button>
+          <button
+            aria-label="Next photo"
+            onClick={() => go(1)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 backdrop-blur flex items-center justify-center shadow opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-white"
+          >
+            <ChevronRight size={18} className="text-slate-700" />
+          </button>
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Go to photo ${i + 1}`}
+                onClick={() => setIndex(i)}
+                className={`h-1.5 rounded-full transition-all ${i === index ? "w-4 bg-white" : "w-1.5 bg-white/50 hover:bg-white/75"}`}
+              />
+            ))}
           </div>
-
-          <dl className="mt-auto pt-4 border-t border-slate-100 space-y-2 text-sm text-slate-500">
-            <div className="flex items-start gap-2">
-              <Presentation size={14} className="mt-0.5 shrink-0 text-slate-300" />
-              <dd className="leading-snug">
-                {item.session}
-                {item.talkNumber && (
-                  <span className="ml-1.5 inline-block whitespace-nowrap font-semibold text-teal-600">
-                    (Talk {item.talkNumber})
-                  </span>
-                )}
-              </dd>
-            </div>
-            <div className="flex items-start gap-2">
-              <Clock size={14} className="mt-0.5 shrink-0 text-slate-300" />
-              <dd className="leading-snug">{item.time}</dd>
-            </div>
-            <div className="flex items-start gap-2">
-              <MapPin size={14} className="mt-0.5 shrink-0 text-slate-300" />
-              <dd className="leading-snug">{item.location}</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
-    </AnimatedSection>
+        </>
+      )}
+    </div>
   );
 }
 
@@ -118,36 +133,11 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 32 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}>
-              <HeroImage />
+              <HeroCarousel images={heroImages} />
             </motion.div>
           </div>
         </div>
       </section>
-
-      {/* ── Upcoming Conference ── */}
-      {upcomingConference && (
-        <section className="py-12 lg:py-16 bg-gradient-to-b from-white to-teal-50/50 border-t border-slate-100">
-          <div className="container-main">
-            <AnimatedSection>
-              <div className="mb-7">
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-teal-600 mb-2">
-                  <CalendarDays size={14} />Upcoming Presentations
-                </p>
-                <h2 className="section-title">{upcomingConference.heading}</h2>
-                {upcomingConference.subtitle && (
-                  <p className="text-base text-slate-500 mt-1.5">{upcomingConference.subtitle}</p>
-                )}
-              </div>
-            </AnimatedSection>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-              {upcomingConference.presentations.map((item, i) => (
-                <PresentationCard key={item.title} item={item} index={i} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ── Recent News ── */}
       <section className="section-padding bg-slate-50/70">
@@ -218,20 +208,32 @@ export default function HomePage() {
                 coral: { bg: "bg-coral-50", icon: "text-coral-600", border: "group-hover:border-coral-400" },
                 gold:  { bg: "bg-gold-50",  icon: "text-gold-600",  border: "group-hover:border-gold-400" },
               }[area.color];
+              const thumb = publications.find((p) => p.title === area.highlight.title)?.thumbnail;
               return (
                 <AnimatedSection key={area.id} delay={i * 0.1}>
                   <Link href={`/research#${area.id}`}
-                    className={`group card p-6 sm:p-7 flex flex-col gap-4 h-full hover:shadow-lg transition-all duration-300 border-2 border-transparent ${colorMap.border}`}
+                    className={`group card overflow-hidden flex flex-col h-full hover:shadow-lg transition-all duration-300 border-2 border-transparent ${colorMap.border}`}
                   >
-                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${colorMap.bg}`}>
-                      <Icon size={22} className={colorMap.icon} />
+                    <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
+                      {thumb && (
+                        <Image src={thumb} alt={area.highlight.short} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      )}
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 pt-8 pb-3">
+                        <p className="text-white text-sm font-bold leading-snug">{area.highlight.short}</p>
+                        <p className="text-white/75 text-xs">{area.highlight.venue}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-slate-900 text-base mb-2 leading-snug group-hover:text-teal-600 transition-colors">{area.title}</h3>
-                      <p className="text-sm text-slate-500 leading-relaxed">{area.description}</p>
-                    </div>
-                    <div className="mt-auto flex items-center gap-1 text-xs font-semibold text-teal-600">
-                      Learn more <ChevronRight size={14} />
+                    <div className="p-5 sm:p-6 flex flex-col gap-2 flex-1">
+                      <div className="flex items-center gap-2.5">
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${colorMap.bg}`}>
+                          <Icon size={16} className={colorMap.icon} />
+                        </div>
+                        <h3 className="font-bold text-slate-900 text-base leading-snug group-hover:text-teal-600 transition-colors">{area.shortTitle}</h3>
+                      </div>
+                      <p className="text-sm text-slate-500 leading-relaxed">{area.summary}</p>
+                      <div className="mt-auto pt-2 flex items-center gap-1 text-xs font-semibold text-teal-600">
+                        Learn more <ChevronRight size={14} />
+                      </div>
                     </div>
                   </Link>
                 </AnimatedSection>

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Mail, ExternalLink, GraduationCap, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { professor, students, interns } from "@/lib/data";
+import { professor, students, interns, pastInterns } from "@/lib/data";
 import type { Member } from "@/lib/data";
 import Link from "next/link";
 
@@ -67,19 +67,26 @@ function ProfessorCard({ member }: { member: Member }) {
 }
 
 function StudentCard({ member, index }: { member: Member; index: number }) {
+  const isPast = member.status === "past";
   return (
     <AnimatedSection delay={index * 0.08}>
-      <div className="card p-5 sm:p-6 flex flex-col items-center text-center gap-4 hover:shadow-md transition-shadow h-full">
-        <div className="relative">
-          <MemberPhoto src={member.photo} name={member.name} size="md" />
-          {member.status === "incoming" && (
-            <span className="absolute -top-1.5 -right-1.5 badge badge-gold text-[10px] px-2">Incoming</span>
-          )}
-        </div>
+      <div className={`card p-5 sm:p-6 flex flex-col items-center text-center gap-4 hover:shadow-md transition-shadow h-full ${isPast ? "opacity-70" : ""}`}>
+        {!isPast && (
+          <div className="relative">
+            <MemberPhoto src={member.photo} name={member.name} size="md" />
+            {member.status === "incoming" && (
+              <span className="absolute -top-1.5 -right-1.5 badge badge-gold text-[10px] px-2">Incoming</span>
+            )}
+          </div>
+        )}
         <div>
-          <h3 className="font-bold text-slate-900 text-base mb-0.5">{member.name}</h3>
+          <div className="flex items-center justify-center gap-1.5 mb-0.5">
+            <h3 className="font-bold text-slate-900 text-base">{member.name}</h3>
+            {isPast && <span className="badge badge-slate text-[10px] px-2">Alumni</span>}
+          </div>
           {member.koreanName && <p className="text-sm text-slate-500 mb-1">{member.koreanName}</p>}
           <p className="text-sm text-teal-600 font-medium mb-1">{member.role}</p>
+          {member.education && <p className="text-sm text-slate-400 mb-1">{member.education}</p>}
           {member.since && <p className="text-sm text-slate-400">Starting {member.since}</p>}
           {member.email && (
             <a href={`mailto:${member.email}`} className="mt-2 inline-flex items-center gap-1 text-sm text-slate-500 hover:text-teal-600 transition-colors">
@@ -134,6 +141,21 @@ export default function MembersPage() {
             ))}
           </div>
         </section>
+
+        {pastInterns.length > 0 && (
+          <section className="mb-14">
+            <AnimatedSection className="mb-6">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-400 flex items-center gap-2">
+                <span className="w-4 h-px bg-teal-500" />Former Interns
+              </h2>
+            </AnimatedSection>
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+              {pastInterns.map((intern, i) => (
+                <StudentCard key={intern.name} member={intern} index={i} />
+              ))}
+            </div>
+          </section>
+        )}
 
         <AnimatedSection>
           <div className="card p-8 sm:p-10 text-center border-2 border-dashed border-teal-300 bg-teal-50/40">
