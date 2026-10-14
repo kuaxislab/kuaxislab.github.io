@@ -727,7 +727,7 @@ export const interns: Member[] = [
     koreanName: "조민재",
     role: "Research Intern",
     email: "",
-    photo: "/images/members/default.png",
+    photo: "/images/members/minjae-jo.png",
     education: "MS, KAIST",
     status: "current",
   },
