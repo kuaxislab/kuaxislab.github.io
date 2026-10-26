@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ExternalLink, Award, Star, Trophy } from "lucide-react";
+import { ExternalLink, Award, Star, Trophy, Newspaper } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { publications, underReview } from "@/lib/data";
 import type { Publication } from "@/lib/data";
@@ -107,6 +107,20 @@ function PubItem({ pub, index }: { pub: Publication; index: number }) {
               </span>
             )}
           </div>
+          {pub.press && pub.press.length > 0 && (
+            <div className="mt-2 flex flex-wrap items-center gap-1.5">
+              <span className="inline-flex items-center gap-1 text-xs font-semibold text-slate-400 mr-0.5">
+                <Newspaper size={13} />In the news
+              </span>
+              {pub.press.map((p) => (
+                <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md border border-slate-200 bg-white text-xs font-medium text-slate-600 hover:border-teal-300 hover:text-teal-600 hover:bg-teal-50/50 transition-colors"
+                >
+                  {p.outlet}<ExternalLink size={10} className="opacity-50" />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </AnimatedSection>

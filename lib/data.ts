@@ -19,6 +19,7 @@ export interface Publication {
   note?: string;
   thumbnail?: string;
   slug?: string;
+  press?: { outlet: string; href: string }[];
 }
 
 export const underReview = {
@@ -51,6 +52,14 @@ export const publications: Publication[] = [
     note: "Q1 Journal · JCR top 7.4%",
     thumbnail: "/images/publications/2026_ismar_a.png",
     slug: "2026_TVCG_PostureAdaptive",
+    press: [
+      { outlet: "파이낸셜뉴스", href: "https://www.fnnews.com/news/202610231605035710" },
+      { outlet: "포인트데일리", href: "https://www.pointdaily.co.kr/news/articleView.html?idxno=323432" },
+      { outlet: "인더스트리뉴스", href: "https://www.industrynews.co.kr/news/articleView.html?idxno=88102" },
+      { outlet: "이뉴스투데이", href: "https://www.enewstoday.co.kr/news/articleViewAmp.html?idxno=2483903" },
+      { outlet: "팝콘뉴스", href: "https://www.popcornnews.net/news/articleView.html?idxno=137094" },
+      { outlet: "대학IN", href: "https://www.dhinsight.co.kr/news/articleView.html?idxno=26487" },
+    ],
   },
   {
     title:
@@ -460,6 +469,14 @@ export interface NewsItem {
 
 export const news: NewsItem[] = [
   // ── 2026 ────────────────────────────────────────────────────────────────
+  {
+    date: "October 2026",
+    year: 2026,
+    description:
+      "Our team received the Best Demo Award at AI Tech Day 2026. Congratulations to Jaehyeong and Hyeseong!",
+    type: "award",
+    image: "/images/news/news_aitechday2026.png",
+  },
   {
     date: "October 2026",
     year: 2026,
