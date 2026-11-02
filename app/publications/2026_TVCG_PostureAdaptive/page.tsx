@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Copy, Check, ArrowLeft } from "lucide-react";
+import { Copy, Check, ArrowLeft, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -17,6 +17,7 @@ const paper = {
   venue: "IEEE Transactions on Visualization and Computer Graphics (IEEE ISMAR 2026)",
   venueShort: "IEEE TVCG (ISMAR 2026)",
   year: 2026,
+  doi: "https://doi.org/10.1109/TVCG.2026.3747524",
   abstract: `While forearm-worn interfaces are effective for tactile navigation in VR, variations in arm posture during handheld controller use can distort directional perception. This paper presents a posture-adaptive compensation model designed to deliver consistent 2D azimuthal cues across changes in arm posture. In our first experiment, we quantified how the horizontal body-to-forearm angle and wrist rotation affected perceived azimuth, establishing an empirical basis for our computational model. Notably, the perceptual shift remained substantially smaller than the physical change in the body-to-forearm angle, evidencing hybrid integration of body-centered and device-centered reference frames. Based on these findings, we developed a user-adaptive compensation model that combines a representative-posture model with lightweight user adaptation to render intended azimuthal directions across changes in arm posture. Subsequent VR navigation experiments demonstrated that this user-adaptive model significantly improved directional accuracy and navigation efficiency, outperforming the posture-independent baseline by up to 22.4 percentage points. This work establishes a methodology for posture-adaptive, eyes-free navigation by mitigating posture-dependent distortions in directional communication.`,
 };
 
@@ -69,7 +70,7 @@ const bibtex = `@article{Hwang2026:posture,
     volume={X},
     number={X},
     pages={XXXX-XXXX},
-    doi={10.1109/TVCG.2026.XXXXXX}
+    doi={10.1109/TVCG.2026.3747524}
 }`;
 
 
@@ -155,6 +156,12 @@ export default function PostureAdaptivePage() {
                 <sup className="mr-0.5">{a.id}</sup>{a.name}
               </span>
             ))}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <a href={paper.doi} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <ExternalLink size={15} /> Paper (DOI)
+            </a>
           </div>
         </motion.div>
       </section>

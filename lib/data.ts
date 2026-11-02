@@ -38,8 +38,10 @@ export const publications: Publication[] = [
       "Jeongwoo Kim, Hyunyong Park, Chaeyong Park, Seungmoon Choi",
     venue: "IEEE Transactions on Haptics",
     year: 2026,
+    doi: "https://doi.org/10.1109/TOH.2026.3734692",
     type: "journal",
     thumbnail: "/images/publications/2026_toh_b.png",
+    slug: "2026_TOH_FingertipPressure",
   },
   {
     title:
@@ -47,6 +49,7 @@ export const publications: Publication[] = [
     authors: "Jaehyeong Hwang, Hyeseong Jin, Chaeyong Park",
     venue: "IEEE Transactions on Visualization and Computer Graphics (IEEE ISMAR 2026)",
     year: 2026,
+    doi: "https://doi.org/10.1109/TVCG.2026.3747524",
     type: "journal",
     award: "Best Paper Award",
     note: "Q1 Journal · JCR top 7.4%",
@@ -67,6 +70,7 @@ export const publications: Publication[] = [
     authors: "Jungha Kim, Seunghoon Park, Chaeyong Park, Sun-Uk Lee, Gerard Jounghyun Kim",
     venue: "IEEE Transactions on Visualization and Computer Graphics (IEEE ISMAR 2026)",
     year: 2026,
+    doi: "https://doi.org/10.1109/TVCG.2026.3747491",
     type: "journal",
     note: "Q1 Journal · JCR top 7.4%",
     thumbnail: "/images/publications/2026_ismar_c.png",

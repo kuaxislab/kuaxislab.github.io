@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Copy, Check, ArrowLeft } from "lucide-react";
+import { Copy, Check, ArrowLeft, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -23,6 +23,7 @@ const paper = {
   venue: "IEEE Transactions on Visualization and Computer Graphics (IEEE ISMAR 2026)",
   venueShort: "IEEE TVCG (ISMAR 2026)",
   year: 2026,
+  doi: "https://doi.org/10.1109/TVCG.2026.3747491",
   abstract: `Player-fixed rest frames (RFs) such as virtual noses have been proposed as cybersickness mitigation cues, yet their underlying mechanisms remain unclear. This study investigates how a player-fixed RF influences cybersickness, eye movement behavior, and perceived orientation during passive visually induced motion. In two experiments using a virtual roller coaster with eye tracking, we found that a player-fixed RF reduced overall cybersickness without compromising presence or vection, and promoted a more centralized gaze distribution that progressively diverged from the control condition over repeated trials. However, because the RF's presence and its alignment with upright were confounded in this setting, a second experiment introduced a visual–vestibular conflict through scene tilt. Under this conflict, only an RF aligned with gravitational (vestibular) upright suppressed the cumulative buildup of sickness and preserved veridical orientation perception, whereas an RF aligned with the tilted visual scene did not. These results suggest that a player-fixed RF operates through at least two channels: redistributing gaze away from destabilizing peripheral motion, and serving as an egocentric orientation reference whose effectiveness may be further enhanced by its congruence with vestibular upright.`,
 };
 
@@ -74,7 +75,7 @@ const bibtex = `@article{kim2026:cybersickness,
     volume={XX},
     number={X},
     pages={XXXX-XXXX},
-    doi={10.1109/TVCG.2026.XXXXXX}
+    doi={10.1109/TVCG.2026.3747491}
 }`;
 
 
@@ -181,6 +182,12 @@ export default function RestFramePage() {
                 <sup className="mr-0.5">{a.id}</sup>{a.name}
               </span>
             ))}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <a href={paper.doi} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <ExternalLink size={15} /> Paper (DOI)
+            </a>
           </div>
         </motion.div>
       </section>
