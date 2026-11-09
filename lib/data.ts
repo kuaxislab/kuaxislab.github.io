@@ -474,6 +474,14 @@ export interface NewsItem {
 export const news: NewsItem[] = [
   // ── 2026 ────────────────────────────────────────────────────────────────
   {
+    date: "November 2026",
+    year: 2026,
+    description:
+      "Prof. Park gave an invited talk at the KAIST Graduate School of Metaverse.",
+    type: "event",
+    image: "/images/news/news_talk2026_kaist.png",
+  },
+  {
     date: "October 2026",
     year: 2026,
     description:
