@@ -82,6 +82,7 @@ export const publications: Publication[] = [
     authors: "Hyeseong Jin, Jaehyeong Hwang, Chaeyong Park",
     venue: "IEEE ISMAR 2026",
     year: 2026,
+    doi: "https://doi.org/10.1109/ISMAR70079.2026.00066",
     type: "conference",
     thumbnail: "/images/publications/2026_ismar_b.png",
     slug: "2026_ISMAR_TactileMotion",

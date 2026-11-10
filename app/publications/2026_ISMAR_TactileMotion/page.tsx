@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Copy, Check, ArrowLeft } from "lucide-react";
+import { Copy, Check, ArrowLeft, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -16,6 +16,7 @@ const paper = {
   affiliations: [{ id: "1", name: "Korea University" }],
   venue: "IEEE ISMAR 2026",
   venueShort: "IEEE ISMAR 2026",
+  doi: "https://doi.org/10.1109/ISMAR70079.2026.00066",
   year: 2026,
   abstract: `Despite rapid advancements in VR, cybersickness remains a critical barrier to comfortable user experiences. Cybersickness is often attributed to sensory conflict between perceived visual self-motion and the lack of corresponding vestibular feedback. We hypothesized that providing tactile motion cues as an alternative for vestibular stimuli could mitigate this conflict. To test this, we conducted an experiment using a haptic vest to deliver torso-based tactile motion cues synchronized with visual rotations in VR, focusing on yaw rotation as a first step. We evaluated sickness levels and UX across different directions (congruent and incongruent) and velocities. Results indicated that tactile motion opposing the visual direction—designed to mimic natural vestibular feedback—significantly reduced cybersickness and improved UX. Interestingly, tactile cues congruent with the visual direction also yielded positive outcomes when delivered at twice the visual velocity. These findings suggest that illusory tactile motion can help mitigate cybersickness without direct vestibular stimulation, highlighting the potential of haptic-based motion compensation for visually induced rotation in VR.`,
 };
@@ -66,7 +67,7 @@ const bibtex = `@inproceedings{Jin2026:feeling,
     title     = {Feeling Visual Motion: Mitigating Cybersickness in VR Using Tactile Motion Cues},
     booktitle = {2026 IEEE International Symposium on Mixed and Augmented Reality (ISMAR)},
     year      = {2026},
-    note      = {Conditionally accepted, to appear}
+    doi       = {10.1109/ISMAR70079.2026.00066}
 }`;
 
 function CopyBibtex() {
@@ -149,6 +150,12 @@ export default function TactileMotionPage() {
                 <sup className="mr-0.5">{a.id}</sup>{a.name}
               </span>
             ))}
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <a href={paper.doi} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <ExternalLink size={15} /> Paper (DOI)
+            </a>
           </div>
         </motion.div>
       </section>
