@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Mail, ExternalLink, GraduationCap, Users } from "lucide-react";
+import { Mail, Globe, ExternalLink, GraduationCap, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { professor, students, interns, pastInterns } from "@/lib/data";
@@ -93,6 +93,11 @@ function StudentCard({ member, index }: { member: Member; index: number }) {
               <Mail size={12} />{member.email}
             </a>
           )}
+          {member.links?.map((link) => (
+            <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="mt-2 flex items-center justify-center gap-1 text-sm text-slate-500 hover:text-teal-600 transition-colors">
+              <Globe size={12} />{link.label}
+            </a>
+          ))}
         </div>
       </div>
     </AnimatedSection>

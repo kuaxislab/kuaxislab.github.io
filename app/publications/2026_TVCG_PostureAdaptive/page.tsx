@@ -9,7 +9,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 const paper = {
   title: "Posture-Adaptive Azimuthal Guidance via a Forearm Vibrotactile Interface for VR Navigation",
   authors: [
-    { name: "Jaehyeong Hwang", affil: "1" },
+    { name: "Jaehyeong Hwang", affil: "1", url: "https://jaehyeonghwang.github.io/" },
     { name: "Hyeseong Jin", affil: "1" },
     { name: "Chaeyong Park", affil: "1", note: "†", url: "https://chaeyongpark.github.io/" },
   ],

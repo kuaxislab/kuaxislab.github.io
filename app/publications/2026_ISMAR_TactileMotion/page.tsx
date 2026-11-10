@@ -10,7 +10,7 @@ const paper = {
   title: "Feeling Visual Motion: Mitigating Cybersickness in VR Using Tactile Motion Cues",
   authors: [
     { name: "Hyeseong Jin", affil: "1" },
-    { name: "Jaehyeong Hwang", affil: "1" },
+    { name: "Jaehyeong Hwang", affil: "1", url: "https://jaehyeonghwang.github.io/" },
     { name: "Chaeyong Park", affil: "1", note: "†", url: "https://chaeyongpark.github.io/" },
   ],
   affiliations: [{ id: "1", name: "Korea University" }],

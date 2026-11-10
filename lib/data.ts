@@ -722,6 +722,7 @@ export const students: Member[] = [
     role: "MS-PhD Student",
     email: "",
     photo: "/images/members/jaehyeong-hwang.png",
+    links: [{ label: "Personal Page", href: "https://jaehyeonghwang.github.io/" }],
     status: "current",
   },
   {
